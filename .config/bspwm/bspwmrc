@@ -1,0 +1,59 @@
+#! /bin/sh
+
+sxhkd &
+nitrogen --restore &
+firefox &
+telegram-desktop &
+discord &
+xsetroot -cursor_name left_ptr &
+xset r rate 350 60 &
+
+bspc monitor -d Code Web Media Chats Games
+
+#### BSPWM configuration ####
+bspc config border_radius               0 
+bspc config border_width                3
+bspc config window_gap			0	
+bspc config top_padding			33	
+bspc config bottom_padding		0
+bspc config left_padding		0
+bspc config right_padding		0
+bspc config click_to_focus              true
+bspc config split_ratio                 0.55
+bspc config single_monocle              true
+bspc config borderless_monocle          true
+bspc config gapless_monocle             false
+bspc config focus_by_distance           true
+bspc config focus_follows_pointer       true
+bspc config history_aware_focus         true
+#bspc config honor_size_hints            true
+bspc config top_monocle_padding		10
+bspc config right_monocle_padding	50
+bspc config bottom_monocle_padding	10
+bspc config left_monocle_padding	50
+bspc config pointer_modifier 		mod4
+bspc config pointer_action1 		move
+bspc config pointer_action2 		resize_side
+bspc config pointer_action3 		resize_corner
+
+#### BSPWM coloring ####
+bspc config normal_border_color	       "#4c566a"
+#bspc config active_border_color       "#81a1c1"
+bspc config presel_feedback_color      "#b48ead"
+bspc config focused_border_color       "#5e81ac"
+bspc config urgent_border_color        "#dd2727"
+
+#### BSPWM rules ###
+bspc rule -a firefox desktop=^2 follow=on focus=on center=on private=on
+bspc rule -a TelegramDesktop desktop=^4
+bspc rule -a discord desktop=^4
+bspc rule -a Skype desktop=^4
+bspc rule -a Lutris desktop=^5 state=floating focus=on center=on private=on
+bspc rule -a code-oss desktop=^1
+bspc rule -a Steam desktop=^5
+bspc rule -a mpv desktop=^3 state=pseudo_tiled center=on focus=on
+bspc rule -a feh state=floating center=on focus=on
+
+if ! pgrep "polybar" > /dev/null 2>&1 ; then
+    ~/.config/polybar/launch.sh &
+fi

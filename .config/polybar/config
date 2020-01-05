@@ -1,0 +1,162 @@
+[colors]
+background = #2e3440
+foreground = #e5e9f0
+black      = #2e3440
+red        = #bf616a
+green      = #a3be8c
+yellow     = #EBCB8B
+blue       = #5E81AC
+magenta    = #B48EAD
+cyan       = #8fbcbb
+white      = #D8DEE9
+orange     = #D08770
+
+
+[bar/sgtxn]
+width  = 100%
+height = 25
+offset-x = 0%
+;offset-y = 0.5%
+bottom = false
+radius = 0
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size  = 3
+line-color = ${colors.white}
+border-size = 4 
+border-color = ${colors.background}
+
+padding-left  = 1
+padding-right = 1 
+module-margin = 1
+
+font-0 = "mononoki:size=11;2"
+font-1 = "Noto Sans CJK JP:size=11;2"
+font-2 = "Font Awesome 5 Free:style=Solid:size=13;2"
+font-3 = "Font Awesome 5 Free:style=Regular:size=13;2"
+font-4 = "Font Awesome 5 Brands:style=Regular:size=13;2"
+
+modules-left   = bspwm
+modules-center = 
+modules-right  = network keyboard audio date powermenu
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+
+tray-detached = false
+tray-offset-x = 0
+tray-offset-y = 0
+tray-position = center
+tray-padding = 4
+tray-maxsize = 25
+tray-scale = 1.0
+tray-background = ${colors.background}
+
+wm-restack = bspwm
+
+
+[module/bspwm]
+type = internal/bspwm
+
+enable-click = true
+
+label-dimmed			= %icon%
+label-focused			= %icon%
+label-empty			= %icon%
+label-occupied			= %icon%
+label-urgent			= %icon%
+
+label-separator			= "  "
+label-focused-padding		= 1
+
+ws-icon-0 = Code;
+ws-icon-1 = Web;龜
+ws-icon-2 = Media;
+ws-icon-3 = Chats;
+ws-icon-4 = Games;
+ws-icon-default = ♟
+
+label-focused-underline  = ${colors.blue}
+
+
+[module/keyboard]
+type = internal/xkeyboard
+format = <label-layout>
+label-layout = %icon%  
+layout-icon-0 = us; EN
+layout-icon-1 = ru; RU 
+
+
+[module/date]
+type = internal/date
+interval = 1
+time-alt =  %H:%M, %a, %d %B
+time =  %H:%M
+label            = "%time%"
+
+
+[module/audio]
+type = internal/pulseaudio
+label-volume			= %percentage%%
+label-muted			=  0%
+
+
+[module/network]
+type = internal/network
+interface = enp34s0
+label-connected			=  %downspeed%
+label-disconnected		= Disconnected
+
+
+[module/lock]
+type = custom/text
+content            = 
+click-left = slock
+
+
+[module/logout]
+type = custom/text
+content            = 
+click-left = bspc quit
+
+
+[module/poweroff]
+type = custom/text
+content            = 
+click-left = poweroff
+
+
+[module/powermenu]
+type = custom/menu
+expand-right = false
+
+menu-0-2 = 
+menu-0-2-exec = physlock
+menu-0-1 = 
+menu-0-1-exec = reboot
+menu-0-0 = 
+menu-0-0-exec = shutdown now
+
+label-open = 
+label-separator =     
+label-close = X
+
+
+[module/window]
+type                        = internal/xwindow
+label-maxlen                = 120
+label-empty                 = /usr/bin/bspwm
+
+
+[settings]
+screenchange-reload     = true
+;compositing-background = xor
+;compositing-foreground = source
+;compositing-border     = over
+pseudo-transparency     = true
+
+
+[global/wm]
+margin-top    = 0
+margin-bottom = 0
