@@ -21,7 +21,7 @@ input#urlbar-input {
 	box-shadow: none !important;
 }
 
-#identity-box,#pageActionButton,#tracking-protection-icon-container,#reader-mode-button,#sidebar-splitter { 
+#identity-box,#pageActionButton,#tracking-protection-icon-container,#reader-mode-button,#sidebar-splitter,#page-action-buttons { 
 	display: none !important; 
 }
 
