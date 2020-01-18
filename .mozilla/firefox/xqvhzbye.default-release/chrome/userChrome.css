@@ -21,8 +21,15 @@ input#urlbar-input {
 	box-shadow: none !important;
 }
 
-#identity-box,#pageActionButton,#tracking-protection-icon-container,#reader-mode-button,#sidebar-splitter,#page-action-buttons { 
+#identity-box,#pageActionButton,#tracking-protection-icon-container,#reader-mode-button,#page-action-buttons { 
 	display: none !important; 
 }
 
-#navigator-toolbox { border: none !important;}
+#navigator-toolbox { background-color: #4c566a !important; }
+
+#sidebar-splitter {
+	width: 1px !important; 
+	color: #4c566a !important; 
+	border: none !important;
+}
+
