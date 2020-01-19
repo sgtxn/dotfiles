@@ -128,7 +128,7 @@ ctrl + alt + bracket{left,right}
 	pacmd set-sink-port @DEFAULT_SINK@ {analog-output-lineout,analog-output-headphones}
 
 super + x
-	physlock -p "$(figlet -f "/home/sgtxn/.config/katakana.flf" EFDo UKB)"	
+	physlock -p "$(figlet -f "/home/sgtxn/.config/katakana.flf" EFDoUKB)"	
 
 Print
 	flameshot screen -c
