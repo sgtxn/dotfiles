@@ -69,12 +69,12 @@ label-urgent			= %icon%
 label-separator			= "  "
 label-focused-padding		= 1
 
-ws-icon-0 = Code;
-ws-icon-1 = Web;龜
-ws-icon-2 = Chats;
-ws-icon-3 = Music;
-ws-icon-4 = Media;
-ws-icon-5 = Games;
+ws-icon-0 = 1;
+ws-icon-1 = 2;龜
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
 ws-icon-default = ♟
 
 label-focused-underline  = ${colors.blue}
