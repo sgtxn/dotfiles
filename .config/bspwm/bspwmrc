@@ -55,6 +55,7 @@ bspc rule -a Steam desktop=6
 bspc rule -a mpv desktop=5 state=floating center=on focus=on follow=on
 bspc rule -a feh state=floating center=on focus=on
 bspc rule -a "Google Play Music Desktop Player" desktop=4 focus=on
+bspc rule -a "Emacs" desktop=1 focus=on state=tiled
 
 if ! pgrep "polybar" > /dev/null 2>&1 ; then
     ~/.config/polybar/launch.sh &
