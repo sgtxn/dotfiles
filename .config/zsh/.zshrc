@@ -1,41 +1,61 @@
-autoload -U colors && colors
+# Theming section  
+autoload -U compinit colors zcalc
+compinit -d
+colors
+
 PS1="%B%{$fg[magenta]%}[%{$fg[yellow]%}%1~%{$fg[magenta]%}] "
 
-autoload -U compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-compinit
-_comp_options+=(globdots)
+## Options section
+setopt correct                                                 
+setopt extendedglob                                           
+setopt nocaseglob                                              
+setopt rcexpandparam                                           
+setopt nocheckjobs                                             
+setopt numericglobsort                                         
+setopt nobeep                                                  
+setopt appendhistory                                           
+setopt histignorealldups                                       
+setopt autocd                                                   
 
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
-bindkey -v
-bindkey '^R' history-incremental-search-backward
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"        
+zstyle ':completion:*' rehash true                              
+# Speed up completions
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+HISTFILE=~/.config/zsh/zhistory
+HISTSIZE=1000
+SAVEHIST=500
+WORDCHARS=${WORDCHARS//\/[&.;]}                                 
 
-export KEYTIMEOUT=1
+bindkey -e
+bindkey '^[[7~' beginning-of-line                               
+bindkey '^[[H' beginning-of-line                               
+if [[ "${terminfo[khome]}" != "" ]]; then
+  bindkey "${terminfo[khome]}" beginning-of-line              
+fi
+bindkey '^[[8~' end-of-line                                  
+bindkey '^[[F' end-of-line                                  
+if [[ "${terminfo[kend]}" != "" ]]; then
+  bindkey "${terminfo[kend]}" end-of-line                  
+fi
+bindkey '^[[2~' overwrite-mode                            
+bindkey '^[[3~' delete-char                              
+bindkey '^[[C'  forward-char                            
+bindkey '^[[D'  backward-char                          
+bindkey '^[[5~' history-beginning-search-backward     
+bindkey '^[[6~' history-beginning-search-forward     
 
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-	       [[ $1 = 'block' ]]; then
-      echo -ne '\e[1 q'
-
-        elif [[ ${KEYMAP} == main ]] ||
-		       [[ ${KEYMAP} == viins ]] ||
-		              [[ ${KEYMAP} = '' ]] ||
-			             [[ $1 = 'beam' ]]; then
-	    echo -ne '\e[5 q'
-	      fi
-      }
-zle -N zle-keymap-select
-
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-        echo -ne "\e[5 q"
-}
-zle -N zle-line-init
+# Color man pages
+export LESS_TERMCAP_mb=$'\E[01;32m'
+export LESS_TERMCAP_md=$'\E[01;32m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;47;34m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;36m'
+export LESS=-r
 
 # Use beam shape cursor on startup.
 echo -ne '\e[5 q'

@@ -15,7 +15,7 @@ URxvt.font: xft:mononoki:size=12, \
 	xft:Font Awesome 5 Free:size=11
 URxvt.saveLines: 2000
 URxvt.scrollBar: false
-st.font: mononoki:size=12
+URxvt.letterSpace: -1
 
 dmenu.font: xft:mononoki:size=11,
 
