@@ -18,12 +18,15 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 set go=a
 set mouse=a
 set nohlsearch
 set clipboard+=unnamedplus
+let g:airline_theme='dracula'
 
 nnoremap c "_c
 set nocompatible

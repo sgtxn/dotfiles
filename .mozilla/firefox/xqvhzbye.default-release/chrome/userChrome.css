@@ -16,7 +16,7 @@ input#urlbar-input {
 }
 
 #urlbar,#nav-bar {
-	background-color: #292e39 !important;
+	background-color: #282a36 !important;
 	border: none !important;
 	box-shadow: none !important;
 }
@@ -25,11 +25,11 @@ input#urlbar-input {
 	display: none !important; 
 }
 
-#navigator-toolbox { background-color: #4c566a !important; }
+#navigator-toolbox { background-color: #6272a4 !important; }
 
 #sidebar-splitter {
 	width: 1px !important; 
-	color: #4c566a !important; 
+	color: #6272a4 !important; 
 	border: none !important;
 }
 

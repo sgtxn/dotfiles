@@ -1,16 +1,28 @@
 [colors]
-background = #292e39
-foreground = #e5e9f0
-black      = #2e3440
-red        = #bf616a
-green      = #a3be8c
-yellow     = #EBCB8B
-blue       = #5E81AC
-magenta    = #B48EAD
-cyan       = #8fbcbb
-white      = #D8DEE9
-orange     = #D08770
+;background = #292e39
+;foreground = #e5e9f0
+;black      = #2e3440
+;red        = #bf616a
+;green      = #a3be8c
+;yellow     = #EBCB8B
+;blue       = #5E81AC
+;magenta    = #B48EAD
+;cyan       = #8fbcbb
+;white      = #D8DEE9
+;orange     = #D08770
 
+background = #282a36
+foreground = #f8f8f2
+black      = #282a36
+red	   = #ff5555
+green      = #50fa7b
+yellow     = #f1fa8c
+blue       = #5E81AC
+magenta    = #bd93f9
+cyan       = #8be9fd
+white      = #f8f8f2
+orange     = #ffb86c
+pink       = #ff79c6
 
 [bar/sgtxn]
 width  = 100%
@@ -31,13 +43,13 @@ padding-left  = 1
 padding-right = 1 
 module-margin = 1
 
-font-0 = "mononoki:size=11;2"
+font-0 = "mononoki:size=12;2"
 font-1 = "Font Awesome 5 Free:style=Solid:size=13;2"
 font-2 = "Font Awesome 5 Free:style=Regular:size=13;2"
 font-3 = "Font Awesome 5 Brands:style=Regular:size=13;2"
 
 modules-left   = bspwm
-modules-center = 
+modules-center = title
 modules-right  = network keyboard audio date powermenu
 
 scroll-up = bspwm-desknext
@@ -46,7 +58,7 @@ scroll-down = bspwm-deskprev
 tray-detached = false
 tray-offset-x = 0
 tray-offset-y = 0
-tray-position = center
+tray-position = right
 tray-padding = 4
 tray-maxsize = 25
 tray-scale = 1.0
@@ -77,7 +89,7 @@ ws-icon-4 = 5;
 ws-icon-5 = 6;
 ws-icon-default = ♟
 
-label-focused-underline  = ${colors.blue}
+label-focused-underline  = ${colors.magenta}
 
 
 [module/keyboard]
@@ -147,6 +159,10 @@ label-close = X
 type                        = internal/xwindow
 label-maxlen                = 120
 label-empty                 = /usr/bin/bspwm
+
+[module/title]
+type = internal/xwindow
+label-empty = Hello there
 
 
 [settings]
