@@ -6,7 +6,7 @@
     margin-left: 4px;
 }
 
-input#urlbar-input {
+.urlbar-input-box {
 	width: 99999px !important;
 	text-align: center !important;
 	font-family: "mononoki" !important;
@@ -15,17 +15,20 @@ input#urlbar-input {
 	color: #d8dee9 !important;
 }
 
-#urlbar,#nav-bar {
+#urlbar,#nav-bar,#urlbar-input-container{
 	background-color: #282a36 !important;
 	border: none !important;
 	box-shadow: none !important;
 }
 
-#identity-box,#pageActionButton,#tracking-protection-icon-container,#reader-mode-button,#page-action-buttons { 
+#identity-box,#pageActionButton,#tracking-protection-icon-container,#reader-mode-button,#page-action-buttons,#urlbar-background{ 
 	display: none !important; 
 }
 
-#navigator-toolbox { background-color: #6272a4 !important; }
+#navigator-toolbox { 
+	background-color: #6272a4 !important;
+	border-color: #000000 !important;
+}
 
 #sidebar-splitter {
 	width: 1px !important; 
@@ -33,3 +36,25 @@ input#urlbar-input {
 	border: none !important;
 }
 
+.urlbarView {
+	border: solid !important;
+	border-color: #6272a4 !important;
+	background-color: #44475a !important;
+	margin-inline-start: 0px !important;
+	margin-inline-end: 0px !important;
+	width: 100% !important;
+	border-inline-start-width: 2px !important;
+	border-inline-end-width: 2px !important;
+	border-top-width: 2px !important;
+	border-bottom-width: 2px !important;
+}
+
+/*Disabling megabar
+
+.urlbarView{
+	display: none !important;
+}
+*/
+
+#urlbar[breakout-extend]{top:calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2)!important;left:calc((var(--urlbar-toolbar-width) - var(--urlbar-width)) / 2)!important;width:100%!important}
+#urlbar[breakout-extend] #urlbar-input-container{height:calc(var(--tab-min-height) - 3px)!important;padding:0px!important}

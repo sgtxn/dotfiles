@@ -125,7 +125,9 @@ super + {Left,Down,Up,Right}
 #
 
 ctrl + alt + bracket{left,right} 
-	pacmd set-sink-port @DEFAULT_SINK@ {analog-output-lineout,analog-output-headphones}
+#	pacmd set-sink-port @DEFAULT_SINK@ {analog-output-lineout,analog-output-headphones}
+	pacmd set-default-sink {alsa_output.usb-Samson_Technologies_Samson_GoMic-00.analog-stereo,alsa_output.pci-0000_28_00.4.analog-stereo}; \
+	systemctl --user restart pulseaudio.service;
 
 super + x
 	physlock -p "$(figlet -f "/home/sgtxn/.config/katakana.flf" EFDoUKB)"	

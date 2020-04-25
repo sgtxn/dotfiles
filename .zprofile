@@ -9,3 +9,7 @@ export PATH=~/.local/bin:~/go/bin:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 export GOPATH=~/go
 
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export XIM=fcitx

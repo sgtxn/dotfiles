@@ -1,16 +1,4 @@
 [colors]
-;background = #292e39
-;foreground = #e5e9f0
-;black      = #2e3440
-;red        = #bf616a
-;green      = #a3be8c
-;yellow     = #EBCB8B
-;blue       = #5E81AC
-;magenta    = #B48EAD
-;cyan       = #8fbcbb
-;white      = #D8DEE9
-;orange     = #D08770
-
 background = #282a36
 foreground = #f8f8f2
 black      = #282a36
@@ -49,8 +37,8 @@ font-2 = "Font Awesome 5 Free:style=Regular:size=13;2"
 font-3 = "Font Awesome 5 Brands:style=Regular:size=13;2"
 
 modules-left   = bspwm
-modules-center = title
-modules-right  = network keyboard audio date powermenu
+modules-center = window
+modules-right  = network keyboard audio-better date powermenu
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
@@ -72,25 +60,24 @@ type = internal/bspwm
 
 enable-click = true
 
-label-dimmed			= %icon%
-label-focused			= %icon%
-label-empty			= %icon%
-label-occupied			= %icon%
-label-urgent			= %icon%
+label-focused = %icon%
+label-occupied = %icon%
+label-urgent = %icon%
+label-empty = %icon%
 
 label-separator			= "  "
-label-focused-padding		= 1
+label-focused-padding		= 0
 
 ws-icon-0 = 1;
 ws-icon-1 = 2;龜
 ws-icon-2 = 3;
-ws-icon-3 = 4;
+ws-icon-3 = 4;
 ws-icon-4 = 5;
 ws-icon-5 = 6;
+ws-icon-6 = 7;
 ws-icon-default = ♟
 
-label-focused-underline  = ${colors.magenta}
-
+label-focused-foreground = ${colors.pink}
 
 [module/keyboard]
 type = internal/xkeyboard
@@ -112,6 +99,22 @@ label            = "%time%"
 type = internal/pulseaudio
 label-volume			= %percentage%%
 label-muted			=  0%
+click-right 			= pavucontrol &
+
+
+[module/audio-better]
+type = custom/script
+tail = true
+label=%output%
+
+exec = ~/.config/polybar/scripts/pulseaudio-control.bash listen
+click-right = exec pavucontrol &
+click-left = ~/.config/polybar/scripts/pulseaudio-control.bash togmute
+click-middle = ~/.config/polybar/scripts/pulseaudio-control.bash next-sink
+scroll-up = ~/.config/polybar/scripts/pulseaudio-control.bash up
+scroll-down = ~/.config/polybar/scripts/pulseaudio-control.bash down
+label-padding = 0 
+label-foreground = ${colors.foreground}
 
 
 [module/network]
@@ -157,12 +160,8 @@ label-close = X
 
 [module/window]
 type                        = internal/xwindow
-label-maxlen                = 120
-label-empty                 = /usr/bin/bspwm
-
-[module/title]
-type = internal/xwindow
-label-empty = Hello there
+label-maxlen                = 180
+label-empty                 = Hello there! 
 
 
 [settings]
@@ -170,7 +169,7 @@ screenchange-reload     = true
 ;compositing-background = xor
 ;compositing-foreground = source
 ;compositing-border     = over
-pseudo-transparency     = true
+pseudo-transparency     = false
 
 
 [global/wm]
