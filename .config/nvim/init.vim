@@ -1,3 +1,5 @@
+if !exists('g:vscode')
+
 let mapleader =","
 
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
@@ -50,3 +52,5 @@ au filetype go inoremap <buffer> . .<C-x><C-o>
 :inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 :set completeopt=longest,menuone
 autocmd CompleteDone *.go nested call s:echo_go_info()
+
+endif
