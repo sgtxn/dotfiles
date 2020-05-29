@@ -12,3 +12,5 @@ alias tvclone='nvidia-settings --assign CurrentMetaMode="DP-0: 2560x1440_144+0+0
 alias tvextend='nvidia-settings --assign CurrentMetaMode="DP-0: 2560x1440_144+0+0 {}, HDMI-0:3840x2160_60 +2560+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"'
 alias cr='code -r .'
 alias ls=exa
+export osupath='/home/sgtxn/.wine_osu/drive_c/users/sgtxn/Local Settings/Application Data/osu!'
+alias osu='cd $osupath && export WINEPREFIX=~/.wine_osu && export STAGING_AUDIO_DURATION=5000 && wine osu!.exe'
