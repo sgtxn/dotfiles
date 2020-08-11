@@ -122,13 +122,8 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 #
-# System Hotkeys
+# Custom Hotkeys
 #
-
-ctrl + alt + bracket{left,right} 
-#	pacmd set-sink-port @DEFAULT_SINK@ {analog-output-lineout,analog-output-headphones}
-	pacmd set-default-sink {alsa_output.usb-Samson_Technologies_Samson_GoMic-00.analog-stereo,alsa_output.pci-0000_28_00.4.analog-stereo}; \
-	systemctl --user restart pulseaudio.service;
 
 super + x
 	slock	
@@ -142,8 +137,7 @@ control + Print
 ctrl + super + p
 	dirpath=~/go/src/git.wildberries.ru/finance/go-microservices/$(exa -D1 ~/go/src/git.wildberries.ru/finance/go-microservices | dmenu -l 20 -i);cd $dirpath;code -r .;alacritty --working-directory=$dirpath &;
 
-super + F9
-    pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-lineout
+#
+# Machine-dependent Hotkeys
+#
 
-super + shift + F9
-    pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-headphones

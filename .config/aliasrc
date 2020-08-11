@@ -12,5 +12,7 @@ alias tvclone='nvidia-settings --assign CurrentMetaMode="DP-0: 2560x1440_144+0+0
 alias tvextend='nvidia-settings --assign CurrentMetaMode="DP-0: 2560x1440_144+0+0 {}, HDMI-0:3840x2160_60 +2560+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"'
 alias cr='code -r .'
 alias ls=exa
+alias lsa=exa -a
 alias osu='~/.config/scripts/osu'
 alias uuid='uuidd -r | xclip -sel clip'
+alias work='cd ~/go/src/git.wildberries.ru/finance/go-microservices'

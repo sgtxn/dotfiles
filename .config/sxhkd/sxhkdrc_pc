@@ -1,0 +1,5 @@
+super + F9
+    pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-lineout
+
+super + shift + F9
+    pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-headphones
