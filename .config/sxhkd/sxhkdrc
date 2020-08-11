@@ -32,7 +32,8 @@ super + m
 
 # send the newest marked node to the newest preselected node
 super + y
-	bspc node newest.marked.local -n newest.!automatic.local
+    bspc node -n last.!automatic
+#	bspc node newest.marked.local -n newest.!automatic.local
 
 # swap the current node and the biggest node
 super + g
@@ -130,7 +131,7 @@ ctrl + alt + bracket{left,right}
 	systemctl --user restart pulseaudio.service;
 
 super + x
-	physlock -p "$(figlet -f "/home/sgtxn/.config/katakana.flf" EFDoUKB)"	
+	slock	
 
 Print
 	flameshot screen -c
@@ -140,3 +141,9 @@ control + Print
 
 ctrl + super + p
 	dirpath=~/go/src/git.wildberries.ru/finance/go-microservices/$(exa -D1 ~/go/src/git.wildberries.ru/finance/go-microservices | dmenu -l 20 -i);cd $dirpath;code -r .;alacritty --working-directory=$dirpath &;
+
+super + F9
+    pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-lineout
+
+super + shift + F9
+    pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-headphones

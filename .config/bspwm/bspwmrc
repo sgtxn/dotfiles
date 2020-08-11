@@ -2,13 +2,22 @@
 
 sxhkd &
 nitrogen --restore &
-firefox &
 telegram-desktop &
 discord &
 xsetroot -cursor_name left_ptr &
 xset r rate 350 60 &
 nm-applet &
-redshift-gtk &
+# picom -b --experimental-backends &
+systemctl --user start redshift &
+steam -silent &
+
+if ! pgrep "polybar" > /dev/null 2>&1 ; then
+    ~/.config/polybar/launch.sh &
+fi
+
+if ! pidof "firefox" > /dev/null 2>&1 ; then
+    firefox &
+fi
 
 bspc monitor DP-0  -n 0 -d 1 2 3 4 5 6 7 
 bspc monitor HDMI-0 -n 1 -d 8 9
@@ -16,7 +25,7 @@ bspc monitor HDMI-0 -n 1 -d 8 9
 #### BSPWM configuration ####
 bspc config border_radius               0 
 bspc config border_width                3
-bspc config window_gap			0	
+bspc config window_gap			8	
 bspc config top_padding			33	
 bspc config bottom_padding		0
 bspc config left_padding		0
@@ -38,6 +47,8 @@ bspc config pointer_modifier 		mod4
 bspc config pointer_action1 		move
 bspc config pointer_action2 		resize_side
 bspc config pointer_action3 		resize_corner
+bspc config pointer_motion_interval 5ms
+bspc config automatic_scheme        longest_side
 
 #### BSPWM coloring ####
 bspc config normal_border_color	       "#4c566a"
@@ -56,9 +67,7 @@ bspc rule -a code-oss desktop=1
 bspc rule -a Steam desktop=6
 bspc rule -a mpv state=floating center=on focus=on
 bspc rule -a feh state=floating center=on focus=on
-bspc rule -a "Google Play Music Desktop Player" desktop=4 focus=on
-bspc rule -a "Emacs" desktop=1 focus=on state=tiled
-
-if ! pgrep "polybar" > /dev/null 2>&1 ; then
-    ~/.config/polybar/launch.sh &
-fi
+bspc rule -a Gedit state=floating center=on focus=on
+bspc rule -a firefox:Toolkit state=floating center=false sticky=on rectangle=854x480+1692+42
+bspc rule -a Zathura state=tiled center=on focus=on
+bspc rule -a feh state=floating center=on focus=on

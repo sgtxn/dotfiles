@@ -25,8 +25,8 @@ zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 HISTFILE=~/.config/zsh/zhistory
-HISTSIZE=1000
-SAVEHIST=500
+HISTSIZE=1000000
+SAVEHIST=1000000
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 
 
 bindkey -e
