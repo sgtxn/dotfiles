@@ -44,7 +44,7 @@ n ()
     fi
 }
 
-export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --bind alt-j:down,alt-k:up"
 
 # CTRL-R - Paste the selected command from history into the command line
 fzf-history-widget() {

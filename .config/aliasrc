@@ -1,11 +1,12 @@
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
 alias \
-	cfk="vim ~/.config/sxhkd/sxhkdrc" \
+	cfk="vim ~/.config/sxhkd/" \
 	cfb="vim ~/.config/bspwm/bspwmrc" \
-	cfr="vim ~/.Xresources" \
+	cfx="vim ~/.Xresources" \
 	cfz="vim $ZDOTDIR/.zshrc" \
-	cfp="vim ~/.config/polybar/config"
+	cfp="vim ~/.config/polybar/config" \
+    cfa="vim ~/.config/aliasrc"
 
 alias config="/usr/bin/git --git-dir=/home/sgtxn/.cfg/ --work-tree=/home/sgtxn"
 alias tvclone='nvidia-settings --assign CurrentMetaMode="DP-0: 2560x1440_144+0+0 {}, HDMI-0:3840x2160_60 +0+0 {viewportin=2560x1440, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"'
