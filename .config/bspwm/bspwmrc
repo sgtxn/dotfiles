@@ -2,7 +2,6 @@
 
 # ------------------Variables-----------------
 
-HOSTNAME=$(cat /etc/hostname)
 PCHOST='sgt'
 LAPTOPHOST='sgtxn-laptop'
 
@@ -106,7 +105,7 @@ shared_bspwm_rules() {
 
 # --------------------Execute------------------
 
-if [ $HOSTNAME = $PCHOST ]; then
+if [ $(hostname) = $PCHOST ]; then
     cat $XDG_CONFIG_HOME/sxhkd/sxhkdrc_shared $XDG_CONFIG_HOME/sxhkd/sxhkdrc_pc > $XDG_CONFIG_HOME/sxhkd/sxhkdrc 
     shared_startup
     shared_bspwm_config
@@ -115,7 +114,7 @@ if [ $HOSTNAME = $PCHOST ]; then
     pc_bspwm_config
 fi
 
-if [ $HOSTNAME = $LAPTOPHOST ]; then
+if [ $(hostname) = $LAPTOPHOST ]; then
     shared_startup
     shared_bspwm_config
     shared_bspwm_rules
