@@ -1,11 +1,11 @@
 .app-columns, article, .app-header-inner, .team-invitations, .column-panel, .js-int-scroller > *, [data-testid], .js-column-header, .tweet-stats, .tweet-detail-actions, .detail-view-inline, 
 .accordion > *, .column-content > *, .column-header, .compose-content, .js-hide-drawer, .old-composer-footer, fieldset, .conversation-more, .inline-reply, .app-content
 {
-    background-color: #2e3440 !important;
+    background-color: #282a36 !important;
 }
 
 [data-testid], .js-column-header, .tweet-stats, .tweet-detail-actions, .detail-view-inline, .accordion > *, .column-header
 {
-    border-bottom-color:#2e3440 !important;
-    border-top-color:#2e3440 !important;
+    border-bottom-color: #282a36 !important;
+    border-top-color: #282a36 !important;
 }
