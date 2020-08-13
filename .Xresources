@@ -1,7 +1,7 @@
 #ifdef SRVR_sgt
     Xft.dpi: 109 
 #else
-    Xfg.dpi: 140
+    Xft.dpi: 109
 #endif
 
 Xft.antialias: true 

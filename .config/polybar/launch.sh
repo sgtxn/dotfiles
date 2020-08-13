@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PCHOST='sgt'
-LAPTOPHOST='sgtxn-laptop'
+HPHOST='sgt-hp'
 
 # Terminate already running bar instances
 killall -q polybar
@@ -13,6 +13,6 @@ if [ $(hostname) = $PCHOST ]; then
     polybar pc -r
 fi
 
-if [ $(hostname) = $LAPTOPHOST ]; then
+if [ $(hostname) = $HPHOST ]; then
     polybar laptop -r
 fi

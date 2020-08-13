@@ -66,7 +66,6 @@ preexec() { echo -ne '\e[5 q' ;}
 source ~/.zprofile
 source ~/.config/aliasrc
 source ~/.profile
-source /home/sgtxn/.config/broot/launcher/bash/br
 eval "$(direnv hook zsh)"
 
 
