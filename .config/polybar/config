@@ -37,8 +37,8 @@ font-2 = "Font Awesome 5 Free:style=Regular:size=12;2"
 font-3 = "Font Awesome 5 Brands:style=Regular:size=12;2"
 
 modules-left   = bspwm
-modules-center = window
-modules-right  = network keyboard audio-better date powermenu
+modules-center = date window
+modules-right  = network keyboard audio-better powermenu
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
@@ -78,9 +78,9 @@ font-1 = "Font Awesome 5 Free:style=Solid:size=12;3"
 font-2 = "Font Awesome 5 Free:style=Regular:size=12;2"
 font-3 = "Font Awesome 5 Brands:style=Regular:size=12;2"
 
-modules-left   = bspwm
-modules-center = window
-modules-right  = battery networklaptop keyboard audio date powermenu
+modules-left   = bspwm networklaptop 
+modules-center = date window
+modules-right  = backlight battery keyboard audio powermenu
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
@@ -134,7 +134,7 @@ layout-icon-1 = ru;RU
 type = internal/date
 interval = 1
 time-alt =  %H:%M, %a, %d %B
-time =  %H:%M
+time = %H:%M
 label            = "%time%"
 
 
@@ -169,7 +169,7 @@ label-disconnected		= Disconnected
 [module/networklaptop]
 type = internal/network
 interface = wlp2s0
-label-connected			=  %downspeed%
+label-connected			= %downspeed%
 label-disconnected		= Disconnected
 
 [module/lock]
@@ -214,15 +214,18 @@ label-empty                 = Hello there!
 
 [module/battery]
 type = internal/battery
-
 full-at = 100
-
-; $ ls -1 /sys/class/power_supply/
 battery = BAT0
 adapter = ADP1
 poll-interval = 5
 label-discharging =  %percentage%%
 label-charging =  +%percentage%%
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+enable-scroll = true
+label =  %percentage%%
 
 
 [settings]
