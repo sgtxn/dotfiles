@@ -15,6 +15,7 @@ shared_startup() {
     xsetroot -cursor_name left_ptr &
     xset r rate 350 60 &
     nm-applet &
+    wmname compiz &
     # picom -b --experimental-backends &
 }
 
