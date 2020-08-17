@@ -48,6 +48,13 @@ bindkey '^[[D'  backward-char
 bindkey '^[[5~' history-beginning-search-backward     
 bindkey '^[[6~' history-beginning-search-forward     
 
+# Vim mode
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey -v
+bindkey "^V" edit-command-line
+export KEYTIMEOUT=1
+
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
 export LESS_TERMCAP_md=$'\E[01;32m'

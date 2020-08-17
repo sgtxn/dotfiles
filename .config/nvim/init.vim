@@ -31,7 +31,7 @@ call plug#end()
     set go=a
     set mouse=a
     set nohlsearch
-    set clipboard+=unnamedplus
+    set clipboard=unnamedplus
 
 " no ex mode
     nnoremap Q <nop>
