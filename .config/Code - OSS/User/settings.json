@@ -1,0 +1,29 @@
+{
+    "window.zoomLevel": 1,
+    "window.menuBarVisibility": "toggle",
+    "workbench.startupEditor": "newUntitledFile",
+    "go.formatTool": "goimports",
+    "editor.fontFamily": "'Fira Code', 'mononoki', 'Droid Sans Mono', monospace, 'Droid Sans Fallback'",
+    "go.useLanguageServer": true,
+    "workbench.colorTheme": "Dracula Refined",
+    "workbench.iconTheme": "material-icon-theme",
+    "go.lintTool": "golangci-lint",
+    "git.enableSmartCommit": true,
+    "files.autoSave": "off",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.minimap.enabled": false,
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+    "editor.fontSize": 15,
+    "go.delveConfig": {
+        "dlvLoadConfig": {
+            "followPointers": true,
+            "maxVariableRecurse": 1,
+            "maxStringLen": 1024,
+            "maxArrayValues": 64,
+            "maxStructFields": -1
+        },
+        "apiVersion": 2,
+        "showGlobalVariables": true
+    }
+}
