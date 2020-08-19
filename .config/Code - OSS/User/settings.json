@@ -25,5 +25,12 @@
         },
         "apiVersion": 2,
         "showGlobalVariables": true
-    }
+    },
+    "vim.easymotion": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": false,
+    "editor.lineNumbers": "relative",
+    "vim.cursorStylePerMode.insert": "line",
+    "vim.easymotionDimBackground": false,
+    "vim.easymotionMarkerBackgroundColor": "#ff79c6"
 }
