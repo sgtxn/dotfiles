@@ -4,6 +4,8 @@
 
 PCHOST='sgt'
 HPHOST='sgt-hp'
+T440PHOST='t440p'
+
 
 # ----------------Shared startup--------------
 
@@ -27,7 +29,7 @@ pc_startup() {
 
 # --------------Laptop startup----------------
 
-hp_startup() {
+laptop_startup() {
     libinput-gestures-setup start
 }
 
@@ -57,7 +59,7 @@ pc_bspwm_config() {
     bspc config pointer_motion_interval     5ms
 }
 
-hp_bspwm_config() {
+laptop_bspwm_config() {
     bspc monitor eDP1  -n 0 -d 1 2 3 4 5 6 7 
     bspc monitor HDMI1 -n 1 -d 8 9
     bspc config border_radius               0 
@@ -123,13 +125,11 @@ if [ $(hostname) = $PCHOST ]; then
     shared_bspwm_rules
     pc_startup
     pc_bspwm_config
-fi
-
-if [ $(hostname) = $HPHOST ]; then
-    cat $XDG_CONFIG_HOME/sxhkd/sxhkdrc_shared $XDG_CONFIG_HOME/sxhkd/sxhkdrc_hp > $XDG_CONFIG_HOME/sxhkd/sxhkdrc 
+else
+    cat $XDG_CONFIG_HOME/sxhkd/sxhkdrc_shared $XDG_CONFIG_HOME/sxhkd/sxhkdrc_laptop > $XDG_CONFIG_HOME/sxhkd/sxhkdrc 
     shared_startup
     shared_bspwm_config
     shared_bspwm_rules
-    hp_startup 
-    hp_bspwm_config
+    laptop_startup 
+    laptop_bspwm_config
 fi
