@@ -113,7 +113,7 @@ shared_bspwm_rules() {
     bspc rule -a Gedit state=floating center=on focus=on
     bspc rule -a Zathura state=tiled center=on focus=on
     bspc rule -a feh state=floating center=on focus=on
-    bspc rule -a Nemo state=floating center=false focus=on
+    bspc rule -a Nemo state=floating center=true focus=on rectangle=1440x900+0+0
 }
 
 # --------------------Execute------------------
