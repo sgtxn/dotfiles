@@ -31,10 +31,10 @@ padding-left  = 1
 padding-right = 1 
 module-margin = 1
 
-font-0 = "mononoki:size=12;2"
-font-1 = "Font Awesome 5 Free:style=Solid:size=12;3"
-font-2 = "Font Awesome 5 Free:style=Regular:size=12;2"
-font-3 = "Font Awesome 5 Brands:style=Regular:size=12;2"
+font-0 = "mononoki:size=12;0"
+font-1 = "Font Awesome 5 Free:style=Solid:size=12;0"
+font-2 = "Font Awesome 5 Free:style=Regular:size=12;0"
+font-3 = "Font Awesome 5 Brands:style=Regular:size=12;0"
 
 modules-left   = date window
 modules-center = bspwm
@@ -54,15 +54,17 @@ tray-background = ${colors.background}
 
 wm-restack = bspwm
 
-[bar/laptop]
+[bar/hp]
 inherit = bar/pc
 
-font-0 = "mononoki:size=12;2"
-font-1 = "Font Awesome 5 Free:style=Solid:size=12;3"
-font-2 = "Font Awesome 5 Free:style=Regular:size=12;2"
-font-3 = "Font Awesome 5 Brands:style=Regular:size=12;2"
+modules-left   = date window 
+modules-center = bspwm
+modules-right  = backlight battery keyboard audio powermenu
 
-modules-left   = date networklaptop 
+[bar/tp]
+inherit = bar/pc
+
+modules-left   = date window 
 modules-center = bspwm
 modules-right  = backlight battery keyboard audio powermenu
 
@@ -138,11 +140,13 @@ interface          = enp34s0
 label-connected    =  %downspeed%
 label-disconnected = Disconnected
 
-[module/networklaptop]
-type               = internal/network
+[module/networkhp]
+inherit            = module/network
 interface          = wlp2s0
-label-connected    = %downspeed%
-label-disconnected = Disconnected
+
+[module/networktp]
+inherit            = module/network
+interface          = wlp3s0
 
 [module/lock]
 type       = custom/text
@@ -180,7 +184,7 @@ label-close     = X
 
 [module/window]
 type         = internal/xwindow
-label-maxlen = 80
+label-maxlen = 75
 label-empty  = Hello there! 
 
 

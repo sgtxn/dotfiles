@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 PCHOST='sgt'
+TPHOST='t440p'
 
 # Terminate already running bar instances
 killall -q polybar
@@ -10,6 +11,8 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 if [ $(hostname) = $PCHOST ]; then
     polybar pc -r
+elif [ $(hostname) = $TPHOST ]; then
+    polybar tp -r
 else
-    polybar laptop -r
+    polybar hp -r
 fi
