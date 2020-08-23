@@ -13,61 +13,19 @@ orange     = #ffb86c
 pink       = #ff79c6
 
 [bar/pc]
-width  = 100%
-height = 25
-offset-x = 0%
-;offset-y = %
-;bottom = true
-radius = 0
-fixed-center = true
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size  = 3
-line-color = ${colors.white}
-border-size = 4 
-border-color = ${colors.background}
-
-padding-left  = 1
-padding-right = 1 
-module-margin = 1
-
-font-0 = "mononoki:size=12;2"
-font-1 = "Font Awesome 5 Free:style=Solid:size=12;2"
-font-2 = "Font Awesome 5 Free:style=Regular:size=12;2"
-font-3 = "Font Awesome 5 Brands:style=Regular:size=12;2"
-
-modules-left   = date bspwm
-modules-center = window
-modules-right  = network keyboard audio-better powermenu
-
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-tray-detached = false
-tray-offset-x = 0
-tray-offset-y = 0
-tray-position = right
-tray-padding = 4
-tray-maxsize = 25
-tray-scale = 1.0
-tray-background = ${colors.background}
-
-wm-restack = bspwm
-
-[bar/laptop]
-width  = 100%
-height = 22
-offset-x = 0%
-;offset-y = %
-;bottom = true
-radius = 0
-fixed-center = true
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size  = 3
-line-color = ${colors.white}
-border-size = 4 
-border-color = ${colors.background}
+width           = 100%
+height          = 26
+;offset-x       = 0%
+;offset-y       = 4px
+;bottom         = true
+radius          = 0
+fixed-center    = true
+background      = ${colors.background}
+foreground      = ${colors.foreground}
+line-size       = 3
+line-color      = ${colors.white}
+border-top-size = 4 
+border-color    = ${colors.background}
 
 padding-left  = 1
 padding-right = 1 
@@ -78,121 +36,135 @@ font-1 = "Font Awesome 5 Free:style=Solid:size=12;3"
 font-2 = "Font Awesome 5 Free:style=Regular:size=12;2"
 font-3 = "Font Awesome 5 Brands:style=Regular:size=12;2"
 
-modules-left   = date bspwm networklaptop 
-modules-center = window
-modules-right  = backlight battery keyboard audio powermenu
+modules-left   = date window
+modules-center = bspwm
+modules-right  = network keyboard audio-better powermenu
 
-scroll-up = bspwm-desknext
+scroll-up   = bspwm-desknext
 scroll-down = bspwm-deskprev
 
 tray-detached = false
 tray-offset-x = 0
 tray-offset-y = 0
 tray-position = right
-tray-padding = 4
-tray-maxsize = 25
-tray-scale = 1.0
+tray-padding  = 4
+tray-maxsize  = 25
+tray-scale    = 1.0
 tray-background = ${colors.background}
 
 wm-restack = bspwm
 
+[bar/laptop]
+inherit = bar/pc
+
+font-0 = "mononoki:size=12;2"
+font-1 = "Font Awesome 5 Free:style=Solid:size=12;3"
+font-2 = "Font Awesome 5 Free:style=Regular:size=12;2"
+font-3 = "Font Awesome 5 Brands:style=Regular:size=12;2"
+
+modules-left   = date networklaptop 
+modules-center = bspwm
+modules-right  = backlight battery keyboard audio powermenu
+
 
 [module/bspwm]
-type = internal/bspwm
+type                     = internal/bspwm
+format                   = <label-state> <label-mode>
 
-enable-click = true
+enable-click             = true
 
-label-focused = %icon%
-label-occupied = %icon%
-label-urgent = %icon%
-label-empty = %icon%
+label-focused            = %icon% %name%
+label-focused-foreground = ${colors.pink}
+label-occupied           = %icon%
+label-urgent             = %icon%
+label-empty              = %icon%
 
-label-separator			= "  "
-label-focused-padding		= 0
+label-separator			 = "  "
+label-focused-padding    = 0
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
+ws-icon-0 = code;
+ws-icon-1 = web;
+ws-icon-2 = chat;
+ws-icon-3 = work;
+ws-icon-4 = media;
+ws-icon-5 = vidya;
+ws-icon-6 = extra;
 ws-icon-default = ♟
 
-label-focused-foreground = ${colors.pink}
 
 [module/keyboard]
-type = internal/xkeyboard
-format = <label-layout>
+type          = internal/xkeyboard
+format        = <label-layout>
 format-prefix = " "
-label-layout = %icon%  
+label-layout  = %icon%  
 layout-icon-0 = us;EN
 layout-icon-1 = ru;RU 
 
 
 [module/date]
-type = internal/date
-interval = 1
-time-alt =  %H:%M, %a, %d %B
-time = %H:%M
+type             = internal/date
+interval         = 1
+time-alt         =  %H:%M, %a, %d %B
+time             =  %H:%M
 label            = "%time%"
+label-foreground = ${colors.pink}
 
 
 [module/audio]
-type = internal/pulseaudio
-label-volume			= %percentage%%
-label-muted			=  0%
-click-right 			= pavucontrol &
+type          = internal/pulseaudio
+label-volume  = %percentage%%
+label-muted   =  0%
+click-right   = pavucontrol &
 
 
 [module/audio-better]
-type = custom/script
-tail = true
-label=%output%
+type  = custom/script
+tail  = true
+label = %output%
 
-exec = ~/.config/polybar/scripts/pulseaudio-control.bash listen
-click-right = exec pavucontrol &
-click-left = ~/.config/polybar/scripts/pulseaudio-control.bash togmute
-click-middle = ~/.config/polybar/scripts/pulseaudio-control.bash next-sink
-scroll-up = ~/.config/polybar/scripts/pulseaudio-control.bash up
-scroll-down = ~/.config/polybar/scripts/pulseaudio-control.bash down
-label-padding = 0 
+exec             = ~/.config/polybar/scripts/pulseaudio-control.bash listen
+click-right      = exec pavucontrol &
+click-left       = ~/.config/polybar/scripts/pulseaudio-control.bash togmute
+click-middle     = ~/.config/polybar/scripts/pulseaudio-control.bash next-sink
+scroll-up        = ~/.config/polybar/scripts/pulseaudio-control.bash up
+scroll-down      = ~/.config/polybar/scripts/pulseaudio-control.bash down
+label-padding    = 0 
 label-foreground = ${colors.foreground}
 
 
 [module/network]
-type = internal/network
-interface = enp34s0
-label-connected			=  %downspeed%
-label-disconnected		= Disconnected
+type               = internal/network
+interface          = enp34s0
+label-connected    =  %downspeed%
+label-disconnected = Disconnected
 
 [module/networklaptop]
-type = internal/network
-interface = wlp2s0
-label-connected			= %downspeed%
-label-disconnected		= Disconnected
+type               = internal/network
+interface          = wlp2s0
+label-connected    = %downspeed%
+label-disconnected = Disconnected
 
 [module/lock]
-type = custom/text
-content            = 
+type       = custom/text
+content    = 
 click-left = slock
 
 
 [module/logout]
-type = custom/text
+type               = custom/text
 content            = 
-click-left = bspc quit
+click-left         = bspc quit
 
 
 [module/poweroff]
-type = custom/text
-content            = 
+type       = custom/text
+content    = 
 click-left = poweroff
 
 
 [module/powermenu]
-type = custom/menu
-expand-right = false
+type          = custom/menu
+expand-right  = false
 
 menu-0-2 = 
 menu-0-2-exec = physlock
@@ -201,31 +173,31 @@ menu-0-1-exec = reboot
 menu-0-0 = 
 menu-0-0-exec = shutdown now
 
-label-open = 
+label-open      = 
 label-separator =     
-label-close = X
+label-close     = X
 
 
 [module/window]
-type                        = internal/xwindow
-label-maxlen                = 180
-label-empty                 = Hello there! 
+type         = internal/xwindow
+label-maxlen = 80
+label-empty  = Hello there! 
 
 
 [module/battery]
-type = internal/battery
+type    = internal/battery
 full-at = 100
 battery = BAT0
 adapter = ADP1
-poll-interval = 5
+poll-interval     = 5
 label-discharging =  %percentage%%
-label-charging =  +%percentage%%
+label-charging    =  +%percentage%%
 
 [module/backlight]
-type = internal/backlight
-card = intel_backlight
+type          = internal/backlight
+card          = intel_backlight
 enable-scroll = true
-label =  %percentage%%
+label         =  %percentage%%
 
 
 [settings]
