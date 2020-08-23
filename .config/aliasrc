@@ -26,6 +26,8 @@ alias free='free -m'
 alias ssn='sudo killall charon-nm; sudo shutdown now'
 alias sr='sudo killall charon-nm; sudo reboot'
 
+alias wttr='curl v2.wttr.in'
+
 
 ### ARCHIVE EXTRACTION
 # usage: ex <file>
