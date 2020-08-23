@@ -6,6 +6,13 @@ PCHOST='sgt'
 HPHOST='sgt-hp'
 T440PHOST='t440p'
 
+TOP_PADDING=30
+YT_FLOAT_WIDTH=854
+YT_FLOAT_HEIGHT=480
+SCREEN_WIDTH=$(xdpyinfo | awk '/dimensions/{print $2}' | grep -Po "^\d+")
+SCREEN_HEIGHT=$(xdpyinfo | awk '/dimensions/{print $2}' | grep -Po "\d+$")
+YT_FLOAT_RECTANGLE=$YT_FLOAT_WIDTH\x$YT_FLOAT_HEIGHT+$(($SCREEN_WIDTH-$YT_FLOAT_WIDTH))+$TOP_PADDING
+
 
 # ----------------Shared startup--------------
 
@@ -64,7 +71,7 @@ laptop_bspwm_config() {
 }
 
 shared_bspwm_config() {
-    bspc config top_padding			        30	
+    bspc config top_padding			        $TOP_PADDING	
     bspc config bottom_padding		        0
     bspc config left_padding		        0
     bspc config right_padding		        0
@@ -98,7 +105,7 @@ shared_bspwm_config() {
 
 shared_bspwm_rules() {
     bspc rule -a firefox desktop=web follow=on focus=on center=on private=on
-    bspc rule -a firefox:Toolkit state=floating center=false sticky=on rectangle=854x480+1692+42
+    bspc rule -a firefox:Toolkit state=floating center=false sticky=on rectangle=$YT_FLOAT_RECTANGLE
     bspc rule -a TelegramDesktop desktop=chat
     bspc rule -a discord desktop=chat
     bspc rule -a Skype desktop=chat
