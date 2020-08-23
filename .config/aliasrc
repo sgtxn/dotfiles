@@ -18,6 +18,7 @@ alias osu='~/.config/scripts/osu'
 alias uuid='uuidd -r | xclip -sel clip'
 alias work='cd ~/go/src/git.wildberries.ru/finance/go-microservices'
 alias anime='sshfs sgtxn@192.168.11.13:/home/sgtxn/Hideyoshi/Anime /media/Anime -p 27315'
+alias cfgupd='config add -u; config commit -m "autoupd"; config push'
 
 alias mirror='sudo reflector --country Russia --country Finland --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias cp='cp -i'

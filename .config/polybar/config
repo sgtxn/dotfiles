@@ -35,6 +35,7 @@ font-0 = "mononoki:size=12;0"
 font-1 = "Font Awesome 5 Free:style=Solid:size=12;0"
 font-2 = "Font Awesome 5 Free:style=Regular:size=12;0"
 font-3 = "Font Awesome 5 Brands:style=Regular:size=12;0"
+font-4 = "Noto Sans CJK JP:size=10:weight=bold:antialias=true;0"
 
 modules-left   = date window
 modules-center = bspwm
