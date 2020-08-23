@@ -17,7 +17,6 @@ YT_FLOAT_RECTANGLE=$YT_FLOAT_WIDTH\x$YT_FLOAT_HEIGHT+$(($SCREEN_WIDTH-$YT_FLOAT_
 # ----------------Shared startup--------------
 
 shared_startup() {
-    sxhkd &
     nitrogen --restore &
     telegram-desktop &
     discord &
@@ -42,17 +41,10 @@ laptop_startup() {
 
 # ---------- Conditional Startups-------------
 
-if ! pgrep "polybar" > /dev/null 2>&1 ; then
-    ~/.config/polybar/launch.sh &
-fi
-
-if ! pidof "firefox" > /dev/null 2>&1 ; then
-    firefox &
-fi
-
-if ! pgrep "redshift-gtk" > /dev/null 2>&1 ; then
-    redshift-gtk &
-fi
+pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x "polybar" > /dev/null || ~/.config/polybar/launch.sh &
+pidof "firefox" > /dev/null || firefox &
+pgrep "redshift-gtk" > /dev/null || redshift-gtk &
 
 # --------------Shared config-----------------
 
@@ -117,7 +109,7 @@ shared_bspwm_rules() {
     bspc rule -a Gedit state=floating center=on focus=on
     bspc rule -a Zathura state=tiled center=on focus=on
     bspc rule -a feh state=floating center=on focus=on
-    bspc rule -a Nemo state=floating center=true focus=on rectangle=1440x900+0+0
+    bspc rule -a "Nemo:nemo:Home" state=floating center=true focus=on rectangle=1440x900+0+0
 }
 
 # --------------------Execute------------------
