@@ -7,7 +7,6 @@
     "go.useLanguageServer": true,
     "workbench.colorTheme": "Dracula Refined",
     "workbench.iconTheme": "material-icon-theme",
-    "go.lintTool": "golangci-lint",
     "git.enableSmartCommit": true,
     "files.autoSave": "off",
     "diffEditor.ignoreTrimWhitespace": false,
@@ -32,5 +31,6 @@
     "editor.lineNumbers": "relative",
     "vim.cursorStylePerMode.insert": "line",
     "vim.easymotionDimBackground": false,
-    "vim.easymotionMarkerBackgroundColor": "#ff79c6"
+    "vim.easymotionMarkerBackgroundColor": "#ff79c6",
+    "go.lintTool": "golangci-lint"
 }

@@ -135,7 +135,7 @@ control + Print
 	flameshot gui
 
 ctrl + super + p
-	dirpath=~/go/src/git.wildberries.ru/finance/go-microservices/$(exa -D1 ~/go/src/git.wildberries.ru/finance/go-microservices | dmenu -l 20 -i);cd $dirpath;code -r .;sleep 2;alacritty --working-directory=$dirpath &;
+	dirpath=~/go/src/git.wildberries.ru/finance/go-microservices/$(exa -D1 ~/go/src/git.wildberries.ru/finance/go-microservices | dmenu -l 20 -i);cd $dirpath;code -r .;bspc config split_ratio 0.77;sleep 1;alacritty --working-directory=$dirpath &;sleep 1;bspc config split_ratio 0.55;
 
 #
 # Machine-dependent Hotkeys
