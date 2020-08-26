@@ -19,7 +19,7 @@ URxvt*imLocale: en_US.UTF-8
 URxvt*termName: rxvt-unicode-256color
 Urxvt*buffered: false
 URxvt.intensityStyles: false
-URxvt.font: xft:mononoki:size=12, \
+URxvt.font: xft:Mononoki Nerd Font:size=12, \
 	xft:Font Awesome 5 Brands:size=11, \
 	xft:Font Awesome 5 Free:size=11
 URxvt.saveLines: 2000

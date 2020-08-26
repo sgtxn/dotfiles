@@ -16,6 +16,7 @@ export XMODIFIERS=@im=fcitx
 export XIM=fcitx
 
 export K9SCONFIG=/home/sgtxn/.config/k9s
+export STARSHIP_CONFIG=/home/sgtxn/.config/starship/starship.toml
 
 n ()
 {

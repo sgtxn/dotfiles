@@ -1,6 +1,5 @@
 # Theming section  
 autoload -U compinit colors zcalc
-compinit -d
 colors
 
 PS1="%B%{$fg[magenta]%}[%{$fg[yellow]%}%1~%{$fg[magenta]%}] "
@@ -18,6 +17,7 @@ setopt histignorealldups
 setopt autocd                                                   
 setopt complete_aliases
 
+compinit -d
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"        
 zstyle ':completion:*' rehash true                              
@@ -25,6 +25,13 @@ zstyle ':completion:*' rehash true
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' menu select
+# Auto complete with case insenstivity
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zmodload zsh/complist
+# Include hidden files.
+_comp_options+=(globdots)		
+
 HISTFILE=~/.config/zsh/zhistory
 HISTSIZE=1000000
 SAVEHIST=1000000
@@ -55,6 +62,18 @@ bindkey -v
 bindkey "^V" edit-command-line
 export KEYTIMEOUT=1
 
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'left' vi-backward-char
+bindkey -M menuselect 'down' vi-down-line-or-history
+bindkey -M menuselect 'up' vi-up-line-or-history
+bindkey -M menuselect 'right' vi-forward-char
+# Fix backspace bug when switching modes
+bindkey "^?" backward-delete-char
+
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
 export LESS_TERMCAP_md=$'\E[01;32m'
@@ -74,7 +93,7 @@ source ~/.zprofile
 source ~/.config/aliasrc
 source ~/.profile
 eval "$(direnv hook zsh)"
-
+eval "$(starship init zsh)"
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

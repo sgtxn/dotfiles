@@ -1,0 +1,11 @@
+add_newline = true
+
+[character]
+symbol = "➜"
+vicmd_symbol = "←"
+
+[directory]
+truncation_length = 1
+
+[golang]
+disabled = true
