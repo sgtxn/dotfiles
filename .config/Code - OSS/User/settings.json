@@ -25,11 +25,21 @@
         "apiVersion": 2,
         "showGlobalVariables": true
     },
-    "vim.easymotion": true,
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": false,
-    "vim.cursorStylePerMode.insert": "line",
-    "vim.easymotionDimBackground": false,
-    "vim.easymotionMarkerBackgroundColor": "#ff79c6",
-    "go.lintTool": "golangci-lint"
+    "go.lintTool": "golangci-lint",
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Debug",
+                "type": "go",
+                "request": "launch",
+                "mode": "auto",
+                "program": "${fileDirname}",
+                "args": [
+                    "-c",
+                    "../../configs/config.toml"
+                ]
+            }
+        ]
+    }
 }
