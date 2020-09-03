@@ -4,7 +4,6 @@
     "workbench.startupEditor": "newUntitledFile",
     "go.formatTool": "goimports",
     "editor.fontFamily": "'Fira Code', 'mononoki', 'Droid Sans Mono', monospace, 'Droid Sans Fallback'",
-    "go.useLanguageServer": true,
     "workbench.colorTheme": "Dracula Refined",
     "workbench.iconTheme": "material-icon-theme",
     "git.enableSmartCommit": true,
@@ -41,5 +40,6 @@
                 ]
             }
         ]
-    }
+    },
+    "go.useLanguageServer": true
 }
