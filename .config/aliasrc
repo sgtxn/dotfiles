@@ -24,7 +24,7 @@ alias mirror='sudo reflector --country Russia --country Finland --age 24 --proto
 alias cp='cp -i'
 alias df='df -h'
 alias free='free -m'
-alias ssn='sudo killall charon-nm; sudo shutdown now'
+alias ssn='sudo killall charon-nm; shutdown now'
 alias sr='sudo killall charon-nm; sudo reboot'
 
 alias wttr='curl v2.wttr.in'
