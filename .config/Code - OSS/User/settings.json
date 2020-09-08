@@ -41,5 +41,6 @@
             }
         ]
     },
-    "go.useLanguageServer": true
+    "go.useLanguageServer": true,
+    "editor.formatOnSave": true
 }
