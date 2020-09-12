@@ -145,6 +145,9 @@ alt + shift + 1
 alt + shift + 2
     export WORKPATH=~/go/src/playground; rofi -show projects -modi projects:~/.config/rofi/projects.sh
 
+alt + shift + e
+    rofimoji
+
 #rofi -show projects -modi projects:~/.config/rofi/projects.sh
 #
 # Machine-dependent Hotkeys

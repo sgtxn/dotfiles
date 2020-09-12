@@ -1,6 +1,7 @@
 #!/bin/bash
 
-DISCORD_VERSION='0.0.11'
+DISCORD_VERSION=$(pacman -Q discord | grep -Po "\d+\.\d+\.\d+")
+echo Found Discord $DISCORD_VERSION
 
 if ! pacman -Qi npm > /dev/null; then
     sudo pacman -S npm
