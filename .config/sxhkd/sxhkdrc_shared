@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + space
-    rofi -modi drun -show drun
+    rofi -modi drun -show drun -width 30
 #dmenu_run -h 30
 
 # make sxhkd reload its configuration files:
@@ -147,6 +147,9 @@ alt + shift + 2
 
 alt + shift + e
     rofimoji
+
+alt + shift + p
+    rofi -show power -modi power:~/.config/rofi/power-menu.sh -width 8 -lines 5 
 
 #rofi -show projects -modi projects:~/.config/rofi/projects.sh
 #

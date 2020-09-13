@@ -39,17 +39,17 @@ font-4 = "Noto Sans CJK JP:size=10:weight=bold:antialias=true;0"
 
 modules-left   = date window
 modules-center = bspwm
-modules-right  = network keyboard audio-better powermenu
+modules-right  = network keyboard audio-better 
 
 scroll-up   = bspwm-desknext
 scroll-down = bspwm-deskprev
 
 tray-detached = false
 tray-offset-x = 0
-tray-offset-y = 0
+tray-offset-y = -2
 tray-position = right
 tray-padding  = 4
-tray-maxsize  = 25
+tray-maxsize  = 24
 tray-scale    = 1.0
 tray-background = ${colors.background}
 

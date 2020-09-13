@@ -41,6 +41,8 @@
             }
         ]
     },
+    "editor.formatOnSave": true,
     "go.useLanguageServer": true,
-    "editor.formatOnSave": true
+    "evenBetterToml.formatter.indentTables": true,
+    "evenBetterToml.formatter.reorderKeys": true
 }
