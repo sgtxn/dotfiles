@@ -18,6 +18,9 @@ export XIM=fcitx
 export K9SCONFIG=/home/sgtxn/.config/k9s
 export STARSHIP_CONFIG=/home/sgtxn/.config/starship/starship.toml
 
+# Man page color fix
+export LESS_TERMCAP_so=$(tput bold; tput setaf 0; tput setab 4)
+
 n ()
 {
     # Block nesting of nnn in subshells
