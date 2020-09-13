@@ -18,13 +18,13 @@
     --background-primary: #282a36;
     --background-secondary: #282a36;
     --background-tertiary: #282a36;
-    --channels-default: #f1fa8c;
+    --channels-default: #f8f8f2;
     --deprecated-panel-background: #282a36;
     --channeltextarea-background: #282a36;
 }
 
 /* Popout / menu colors. */
-.da-popouts .da-container, .da-panels > .da-container, .da-friendsTableHeader, .da-friendsTable, .da-autocomplete, .da-themedPopout, .da-header, .da-footer, .da-userPopout > *, .da-systemPad, .da-autocompleteHeaderBackground {
+.da-popouts .da-container, .da-peopleColumn, .da-panels > .da-container, .da-friendsTableHeader, .da-friendsTable, .da-autocomplete, .da-themedPopout, .da-header, .da-footer, .da-userPopout > *, .da-systemPad, .da-autocompleteHeaderBackground {
   background-color: var(--background-secondary) !important;
   border-color: transparent !important;
 }
