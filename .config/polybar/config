@@ -60,14 +60,14 @@ inherit = bar/pc
 
 modules-left   = date window 
 modules-center = bspwm
-modules-right  = backlight battery keyboard audio powermenu
+modules-right  = backlight battery keyboard audio 
 
 [bar/tp]
 inherit = bar/pc
 
 modules-left   = date window 
 modules-center = bspwm
-modules-right  = backlight battery keyboard audio powermenu
+modules-right  = backlight battery keyboard audio 
 
 
 [module/bspwm]
