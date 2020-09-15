@@ -1,5 +1,5 @@
 {
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "window.menuBarVisibility": "toggle",
     "workbench.startupEditor": "newUntitledFile",
     "go.formatTool": "goimports",
@@ -12,7 +12,6 @@
     "editor.minimap.enabled": false,
     "go.useCodeSnippetsOnFunctionSuggest": true,
     "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-    "editor.fontSize": 15,
     "go.delveConfig": {
         "dlvLoadConfig": {
             "followPointers": true,
@@ -44,5 +43,6 @@
     "editor.formatOnSave": true,
     "go.useLanguageServer": true,
     "evenBetterToml.formatter.indentTables": true,
-    "evenBetterToml.formatter.reorderKeys": true
+    "evenBetterToml.formatter.reorderKeys": true,
+    "editor.fontSize": 16
 }
