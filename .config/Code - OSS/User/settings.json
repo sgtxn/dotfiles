@@ -41,8 +41,6 @@
     },
     "editor.formatOnSave": true,
     "go.useLanguageServer": true,
-    "evenBetterToml.formatter.indentTables": true,
-    "evenBetterToml.formatter.reorderKeys": true,
     "editor.fontSize": 16,
     "workbench.colorTheme": "Dracula Refined"
 }
