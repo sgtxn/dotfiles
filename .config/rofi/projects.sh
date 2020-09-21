@@ -3,7 +3,7 @@
 if [ ! -z "$@" ]
 then
     bspc node $(bspc query -N -d code | head -n 1) -c
-    PROJECT=$@
+    PROJECT=$(echo $@ | grep -Po "[\w-]+")
     cd $WORKPATH/$PROJECT
     code .
     bspc config split_ratio 0.77

@@ -4,7 +4,6 @@
     "workbench.startupEditor": "newUntitledFile",
     "go.formatTool": "goimports",
     "editor.fontFamily": "'Fira Code', 'mononoki', 'Droid Sans Mono', monospace, 'Droid Sans Fallback'",
-    "workbench.colorTheme": "Dracula Refined",
     "workbench.iconTheme": "material-icon-theme",
     "git.enableSmartCommit": true,
     "files.autoSave": "off",
@@ -44,5 +43,6 @@
     "go.useLanguageServer": true,
     "evenBetterToml.formatter.indentTables": true,
     "evenBetterToml.formatter.reorderKeys": true,
-    "editor.fontSize": 16
+    "editor.fontSize": 16,
+    "workbench.colorTheme": "Dracula Refined"
 }
