@@ -22,6 +22,6 @@ else
         else
             symb=""
         fi
-        echo "$symb ${NC}$(basename $f)"
+        echo "$symb $(basename $f)"
     done
 fi
