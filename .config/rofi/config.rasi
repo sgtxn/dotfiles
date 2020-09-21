@@ -50,7 +50,7 @@ configuration {
 /*	dpi: -1;*/
 /*	threads: 0;*/
 /*	scrollbar-width: 8;*/
-/*	scroll-method: 0;*/
+	scroll-method: 0;
 /*	fake-background: "screenshot";*/
 /*	window-format: "{w}    {c}   {t}";*/
 /*	click-to-exit: true;*/
@@ -101,8 +101,8 @@ configuration {
 	kb-row-up: "Up,Alt+k,ISO_Left_Tab";
 	kb-row-down: "Down,Alt+j";
 /*	kb-row-tab: "Tab";*/
-/*	kb-page-prev: "Page_Up";*/
-/*	kb-page-next: "Page_Down";*/
+	kb-page-prev: "Page_Up,ScrollUp";
+	kb-page-next: "Page_Down,ScrollDown";
 /*	kb-row-first: "Home,KP_Home";*/
 /*	kb-row-last: "End,KP_End";*/
 /*	kb-row-select: "Control+space";*/
@@ -142,8 +142,8 @@ configuration {
 /*	kb-select-10: "Super+0";*/
 /*	ml-row-left: "ScrollLeft";*/
 /*	ml-row-right: "ScrollRight";*/
-/*	ml-row-up: "ScrollUp";*/
-/*	ml-row-down: "ScrollDown";*/
+	ml-row-up: "";
+	ml-row-down: "";
 /*	me-select-entry: "MousePrimary";*/
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/

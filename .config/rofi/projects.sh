@@ -12,5 +12,16 @@ then
     sleep 0.5
     bspc config split_ratio 0.55
 else
-    ls $WORKPATH
+    for f in $WORKPATH/*;
+    do
+        now=$(date +%s)
+        folder_date=$(stat $f --format=%Y)
+        symb=""
+        if (( $folder_date+60*60*24*30 < $now )); then # old projects
+            symb=""
+        else
+            symb=""
+        fi
+        echo "$symb ${NC}$(basename $f)"
+    done
 fi

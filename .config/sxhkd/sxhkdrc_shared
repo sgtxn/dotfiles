@@ -147,10 +147,13 @@ control + Print
 #dirpath=~/go/src/git.wildberries.ru/finance/go-microservices/$(exa -D1 ~/go/src/git.wildberries.ru/finance/go-microservices | dmenu -l 20 -i);cd $dirpath;code -r .;bspc config split_ratio 0.77;sleep 1;alacritty --working-directory=$dirpath &;sleep 1;bspc config split_ratio 0.55;
 
 alt + shift + 1
-    export WORKPATH=~/go/src/git.wildberries.ru/finance/go-microservices; rofi -show projects -modi projects:~/.config/rofi/projects.sh
+    export WORKPATH=~/go/src/git.wildberries.ru/finance/go-microservices; rofi -show projects -modi projects:~/.config/rofi/projects.sh 
 
 alt + shift + 2
     export WORKPATH=~/go/src/playground; rofi -show projects -modi projects:~/.config/rofi/projects.sh
+
+alt + shift + 3
+    export WORKPATH=~/go/src/git.wildberries.ru/finance/go-infrastructure; rofi -show projects -modi projects:~/.config/rofi/projects.sh
 
 alt + shift + e
     rofimoji
