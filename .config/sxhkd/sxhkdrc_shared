@@ -159,7 +159,7 @@ alt + shift + e
     rofimoji
 
 alt + shift + p
-    rofi -show power -modi power:~/.config/rofi/power-menu.sh -width 8 -lines 5 
+    rofi -show power -modi power:~/.config/rofi/power-menu.sh -width 12 -lines 5 
 
 #rofi -show projects -modi projects:~/.config/rofi/projects.sh
 #
