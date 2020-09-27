@@ -52,7 +52,7 @@ pc_bspwm_config() {
     bspc monitor -n 0 -d code web chat work media vidya extra 
     bspc monitor HDMI-0 -n 1 -d 8 9
     bspc config window_gap			        8	
-    bspc config pointer_motion_interval     5ms
+    bspc config pointer_motion_interval     4ms
 }
 
 laptop_bspwm_config() {
