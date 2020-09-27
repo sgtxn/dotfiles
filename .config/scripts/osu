@@ -1,6 +1,6 @@
 #!/bin/sh
 export WINEPREFIX="$HOME/.wine_osu"
-export STAGING_AUDIO_DURATION=10000 
+export STAGING_AUDIO_DURATION=30000 
 export PATH=/opt/wine-osu/bin:$PATH
 export osupath='/home/sgtxn/.wine_osu/drive_c/users/sgtxn/osu'
 cd $osupath 
