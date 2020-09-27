@@ -35,14 +35,4 @@ fi
 xrandr --output DP-0 --auto --primary 
 xrandr --output HDMI-0 --auto --right-of DP-0 --rate 60 
 
-
-# nitrogen --restore &
-# telegram-desktop &
-# discord &
-# xsetroot -cursor_name left_ptr &
-# xset r rate 350 60 &
-# nm-applet &
-# wmname compiz &
-
-# exec dwm
 exec bspwm
