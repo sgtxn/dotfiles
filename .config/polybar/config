@@ -124,12 +124,12 @@ type  = custom/script
 tail  = true
 label = %output%
 
-exec             = ~/.config/polybar/scripts/pulseaudio-control.bash listen
+exec             = ~/.config/polybar/scripts/pulse.bash listen
 click-right      = exec pavucontrol &
-click-left       = ~/.config/polybar/scripts/pulseaudio-control.bash togmute
-click-middle     = ~/.config/polybar/scripts/pulseaudio-control.bash next-sink
-scroll-up        = ~/.config/polybar/scripts/pulseaudio-control.bash up
-scroll-down      = ~/.config/polybar/scripts/pulseaudio-control.bash down
+click-left       = ~/.config/polybar/scripts/pulse.bash togmute
+click-middle     = ~/.config/polybar/scripts/pulse.bash next-sink
+scroll-up        = ~/.config/polybar/scripts/pulse.bash up
+scroll-down      = ~/.config/polybar/scripts/pulse.bash down
 label-padding    = 0 
 label-foreground = ${colors.foreground}
 
