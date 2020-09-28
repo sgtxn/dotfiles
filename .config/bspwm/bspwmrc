@@ -24,6 +24,8 @@ shared_startup() {
     xset r rate 350 60 &
     nm-applet &
     wmname compiz &
+    bsp-layout set tall code --master-size 0.77
+    bsp-layout set tall chat --master-size 0.5
     # picom -b --experimental-backends &
 }
 

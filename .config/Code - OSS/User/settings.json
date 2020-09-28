@@ -42,5 +42,6 @@
     "editor.formatOnSave": true,
     "go.useLanguageServer": true,
     "editor.fontSize": 16,
-    "workbench.colorTheme": "Dracula Refined"
+    "workbench.colorTheme": "Dracula Refined",
+    "python.showStartPage": false
 }
