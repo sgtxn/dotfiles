@@ -158,7 +158,9 @@ alt + shift + 3
 alt + shift + p
     rofi -show power -modi power:~/.config/rofi/power-menu.sh -width 10 -lines 5 
 
-#rofi -show projects -modi projects:~/.config/rofi/projects.sh
+super + alt + space
+   if [ $(bspc config top_padding) -eq 0 ]; then polybar-msg cmd show; bspc config top_padding 30; else polybar-msg cmd hide; bspc config top_padding 0; fi
+
 #
 # Machine-dependent Hotkeys
 #

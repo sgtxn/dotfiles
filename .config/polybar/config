@@ -53,7 +53,9 @@ tray-maxsize  = 24
 tray-scale    = 1.0
 tray-background = ${colors.background}
 
-wm-restack = bspwm
+;wm-restack        = bspwm
+enable-ipc         = true
+;override-redirect = true
 
 [bar/hp]
 inherit = bar/pc
