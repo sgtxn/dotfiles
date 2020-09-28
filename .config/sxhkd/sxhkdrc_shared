@@ -156,7 +156,7 @@ alt + shift + 3
     export WORKPATH=~/go/src/git.wildberries.ru/finance/go-infrastructure; rofi -show projects -modi projects:~/.config/rofi/projects.sh
 
 alt + shift + p
-    rofi -show power -modi power:~/.config/rofi/power-menu.sh -width 12 -lines 5 
+    rofi -show power -modi power:~/.config/rofi/power-menu.sh -width 10 -lines 5 
 
 #rofi -show projects -modi projects:~/.config/rofi/projects.sh
 #
