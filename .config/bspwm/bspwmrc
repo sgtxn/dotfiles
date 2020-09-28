@@ -26,7 +26,7 @@ shared_startup() {
     wmname compiz &
     bsp-layout set tall code --master-size 0.77
     bsp-layout set tall chat --master-size 0.5
-    # picom -b --experimental-backends &
+    picom -b --experimental-backends
 }
 
 # --------------Main PC startup---------------
