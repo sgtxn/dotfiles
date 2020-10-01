@@ -24,8 +24,6 @@ shared_startup() {
     xset r rate 350 60 &
     nm-applet &
     wmname compiz &
-    bsp-layout set tall code --master-size 0.77
-    bsp-layout set tall chat --master-size 0.5
     picom -b --experimental-backends
 }
 
@@ -53,7 +51,7 @@ pgrep "redshift-gtk" > /dev/null || redshift-gtk &
 pc_bspwm_config() {
     bspc monitor -n 0 -d code web chat work media vidya extra 
     bspc monitor HDMI-0 -n 1 -d 8 9
-    bspc config window_gap			        8	
+    bspc config window_gap			        0	
     bspc config pointer_motion_interval     4ms
 }
 
