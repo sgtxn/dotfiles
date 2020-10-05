@@ -24,12 +24,12 @@ shared_startup() {
     xset r rate 350 60 &
     nm-applet &
     wmname compiz &
-    picom -b --experimental-backends
 }
 
 # --------------Main PC startup---------------
 
 pc_startup() {
+    picom -b --experimental-backends
     steam -silent &
 }
 
