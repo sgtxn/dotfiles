@@ -24,6 +24,7 @@ shared_startup() {
     xset r rate 350 60 &
     nm-applet &
     wmname compiz &
+    setxkbmap -layout us,ru &
 }
 
 # --------------Main PC startup---------------
@@ -31,6 +32,7 @@ shared_startup() {
 pc_startup() {
     picom -b --experimental-backends
     steam -silent &
+    mpd-discord-rpc &
 }
 
 # --------------Laptop startup----------------
@@ -44,7 +46,7 @@ laptop_startup() {
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x "polybar" > /dev/null || ~/.config/polybar/launch.sh &
 pidof "firefox" > /dev/null || firefox &
-pgrep "redshift-gtk" > /dev/null || redshift-gtk &
+pgrep "redshift-gtk" > /dev/null || redshift -l 55.7522:37.6156 &
 
 # --------------Shared config-----------------
 

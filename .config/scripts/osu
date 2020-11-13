@@ -1,8 +1,8 @@
 #!/bin/sh
-export WINEPREFIX="$HOME/.wine_osu"
-export STAGING_AUDIO_DURATION=30000 
+export WINEPREFIX="$HOME/Games/osu"
+export STAGING_AUDIO_DURATION=10000 
 export PATH=/opt/wine-osu/bin:$PATH
-export osupath='/home/sgtxn/.wine_osu/drive_c/users/sgtxn/osu'
+export osupath='/home/sgtxn/Games/osu/drive_c/osu'
 cd $osupath 
 if ! mountpoint -q $osupath/Songs; then
     sudo mount /dev/sda2 $osupath/Songs

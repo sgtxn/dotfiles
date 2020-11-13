@@ -1,10 +1,8 @@
 {
-    "window.zoomLevel": 0,
     "window.menuBarVisibility": "toggle",
     "workbench.startupEditor": "newUntitledFile",
     "go.formatTool": "goimports",
     "editor.fontFamily": "'Fira Code', 'mononoki', 'Droid Sans Mono', monospace, 'Droid Sans Fallback'",
-    "workbench.iconTheme": "material-icon-theme",
     "git.enableSmartCommit": true,
     "files.autoSave": "off",
     "diffEditor.ignoreTrimWhitespace": false,
@@ -43,5 +41,7 @@
     "go.useLanguageServer": true,
     "editor.fontSize": 16,
     "workbench.colorTheme": "Dracula Refined",
-    "clangd.path": "/home/sgtxn/.config/Code - OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/10.0.0/clangd_10.0.0/bin/clangd",
+    "workbench.iconTheme": "material-icon-theme",
+    "rust-client.rustupPath": "/usr/bin/rustup",
+    "extensions.ignoreRecommendations": false,
 }
