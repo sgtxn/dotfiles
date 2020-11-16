@@ -28,7 +28,8 @@ URxvt.letterSpace: -1
 
 dmenu.font: xft:mononoki:size=12,
 
-Xcursor.theme: posy-cursors
+Xcursor.theme: capitaine-cursors-light
+Xcursor.size: 30
 
 *.foreground: #F8F8F2
 *.background: #282A36
