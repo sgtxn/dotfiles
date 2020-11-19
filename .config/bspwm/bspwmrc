@@ -25,6 +25,7 @@ shared_startup() {
     nm-applet &
     wmname compiz &
     setxkbmap -layout us,ru &
+    systemctl --user start clipmenud.service &
 }
 
 # --------------Main PC startup---------------
