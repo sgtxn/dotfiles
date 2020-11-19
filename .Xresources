@@ -1,11 +1,9 @@
-#ifdef SRVR_sgt
-    Xft.dpi: 109 
+#ifdef SRVR_t440p
+    Xft.dpi: 115 
+    Xcursor.size: 36
 #else
-    #ifdef SRVR_t440p
-        Xft.dpi: 115
-    #else
-        Xft.dpi: 109
-    #endif
+    Xft.dpi: 109
+    Xcursor.size: 30
 #endif
 
 Xft.antialias: true 
@@ -29,7 +27,6 @@ URxvt.letterSpace: -1
 dmenu.font: xft:mononoki:size=12,
 
 Xcursor.theme: capitaine-cursors-light
-Xcursor.size: 30
 
 *.foreground: #F8F8F2
 *.background: #282A36
