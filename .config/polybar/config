@@ -1,5 +1,5 @@
 [colors]
-background = #aaa282a36
+background = #282a36
 foreground = #f8f8f2
 black      = #282a36
 red	       = #ff5555
@@ -56,13 +56,6 @@ tray-background = ${colors.background}
 ;wm-restack        = bspwm
 enable-ipc         = true
 ;override-redirect = true
-
-[bar/hp]
-inherit = bar/pc
-
-modules-left   = date window 
-modules-center = bspwm
-modules-right  = backlight battery keyboard audio 
 
 [bar/tp]
 inherit = bar/pc

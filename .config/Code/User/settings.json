@@ -44,4 +44,5 @@
     "workbench.iconTheme": "material-icon-theme",
     "rust-client.rustupPath": "/usr/bin/rustup",
     "extensions.ignoreRecommendations": false,
+    "explorer.confirmDelete": false,
 }

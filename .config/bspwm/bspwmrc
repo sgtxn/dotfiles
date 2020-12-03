@@ -104,7 +104,7 @@ shared_bspwm_rules() {
     bspc rule -a discord desktop=chat
     bspc rule -a Skype desktop=chat
     bspc rule -a Lutris desktop=vidya focus=on center=on private=on
-    bspc rule -a code-oss desktop=code
+    bspc rule -a Code desktop=code
     bspc rule -a Steam desktop=vidya
     bspc rule -a mpv state=floating center=on focus=on
     bspc rule -a feh state=floating center=on focus=on
