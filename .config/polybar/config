@@ -41,8 +41,8 @@ modules-left   = date window
 modules-center = bspwm
 modules-right  = network keyboard audio-better 
 
-scroll-up   = bspwm-desknext
-scroll-down = bspwm-deskprev
+scroll-up   = bspwm-deskprev
+scroll-down = bspwm-desknext
 
 tray-detached = false
 tray-offset-x = 0
