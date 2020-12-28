@@ -173,6 +173,8 @@ alt + shift + c
 super + alt + space
    if [ $(bspc config top_padding) -eq 0 ]; then polybar-msg cmd show; bspc config top_padding 30; else polybar-msg cmd hide; bspc config top_padding 0; fi
 
+alt + shift + F9
+    rofi -show bt -modi bt:~/.config/rofi/bluetooth.sh -width 35 -lines 5 
 #
 # Machine-dependent Hotkeys
 #
