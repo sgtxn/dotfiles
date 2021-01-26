@@ -44,6 +44,9 @@ colors:
   indexed_colors: []
 
 window:
+  dimensions:
+    columns: 110
+    lines: 40
   padding:
     x: 3
     y: 3
