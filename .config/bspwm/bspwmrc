@@ -47,7 +47,7 @@ laptop_startup() {
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x "polybar" > /dev/null || ~/.config/polybar/launch.sh &
 pidof "firefox" > /dev/null || firefox &
-pgrep "redshift-gtk" > /dev/null || redshift -l 55.7522:37.6156 &
+pgrep "redshift" > /dev/null || redshift -l 55.7522:37.6156 &
 
 # --------------Shared config-----------------
 
