@@ -39,7 +39,7 @@ font-4 = "Noto Sans CJK JP:size=10:weight=bold:antialias=true;0"
 
 modules-left   = date window
 modules-center = bspwm
-modules-right  = network keyboard audio-better 
+modules-right  = keyboard audio-better 
 
 scroll-up   = bspwm-deskprev
 scroll-down = bspwm-desknext
@@ -86,7 +86,9 @@ ws-icon-2 = chat;
 ws-icon-3 = work;
 ws-icon-4 = media;
 ws-icon-5 = vidya;
-ws-icon-6 = extra;
+ws-icon-6 = extra;
+ws-icon-7 = pray;
+ws-icon-8 = what;
 ws-icon-default = ♟
 
 
@@ -197,7 +199,6 @@ type          = internal/backlight
 card          = intel_backlight
 enable-scroll = true
 label         =  %percentage%%
-
 
 [settings]
 screenchange-reload     = true

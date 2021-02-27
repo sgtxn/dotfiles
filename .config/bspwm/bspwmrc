@@ -47,20 +47,17 @@ laptop_startup() {
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x "polybar" > /dev/null || ~/.config/polybar/launch.sh &
 pidof "firefox" > /dev/null || firefox &
-pgrep "redshift" > /dev/null || redshift -l 55.7522:37.6156 &
 
 # --------------Shared config-----------------
 
 pc_bspwm_config() {
-    bspc monitor -n 0 -d code web chat work media vidya extra 
-    bspc monitor HDMI-0 -n 1 -d 8 9
+    bspc monitor -n 0 -d code web chat work media vidya extra pray what
     bspc config window_gap			        0	
     bspc config pointer_motion_interval     4ms
 }
 
 laptop_bspwm_config() {
-    bspc monitor -n 0 -d code web chat work media vidya extra 
-    bspc monitor HDMI1 -n 1 -d 8 9
+    bspc monitor -n 0 -d code web chat work media vidya extra pray what
     bspc config window_gap			        0	
     bspc config pointer_motion_interval     8ms
 }
@@ -72,7 +69,7 @@ shared_bspwm_config() {
     bspc config right_padding		        0
     bspc config border_radius               0 
     bspc config border_width                3
-    bspc config click_to_focus              true
+    bspc config click_to_focus              false
     bspc config split_ratio                 0.5
     bspc config single_monocle              true
     bspc config borderless_monocle          true

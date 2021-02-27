@@ -15,7 +15,7 @@ alias cr='code -r .'
 alias ls='exa --group-directories-first'
 alias lsa='exa -a --group-directories-first'
 alias uuid='uuidd -r | xclip -sel clip'
-alias work='cd ~/go/src/git.wildberries.ru/finance/go-microservices'
+alias work='cd ~/work/code'
 alias anime='sshfs sgtxn@192.168.11.13:/home/sgtxn/Hideyoshi/Anime /media/Anime -p 27315'
 alias cfgupd='config add -u; config commit -m "autoupd"; config push'
 
