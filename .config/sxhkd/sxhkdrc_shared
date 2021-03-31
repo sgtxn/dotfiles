@@ -156,13 +156,10 @@ control + Print
 	flameshot gui
 
 alt + shift + 1
-    export WORKPATH=~/go/src/git.wildberries.ru/finance/go-microservices; rofi -show projects -modi projects:~/.config/rofi/projects.sh 
+    export WORKPATH=~/work/code; rofi -show projects -modi projects:~/.config/rofi/projects.sh 
 
 alt + shift + 2
     export WORKPATH=~/go/src/playground; rofi -show projects -modi projects:~/.config/rofi/projects.sh
-
-alt + shift + 3
-    export WORKPATH=~/go/src/git.wildberries.ru/finance/go-infrastructure; rofi -show projects -modi projects:~/.config/rofi/projects.sh
 
 alt + shift + p
     rofi -show power -modi power:~/.config/rofi/power-menu.sh -width 10 -lines 5 
@@ -175,7 +172,10 @@ super + alt + space
 
 alt + shift + F9
     rofi -show bt -modi bt:~/.config/rofi/bluetooth.sh -width 35 -lines 5 
-#
+
+super + F12
+    dunstctl set-paused toggle
+
 # Machine-dependent Hotkeys
 #
 

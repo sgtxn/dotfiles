@@ -39,7 +39,7 @@ font-4 = "Noto Sans CJK JP:size=10:weight=bold:antialias=true;0"
 
 modules-left   = date window
 modules-center = bspwm
-modules-right  = keyboard audio-better 
+modules-right  = pomod keyboard audio-better 
 
 scroll-up   = bspwm-deskprev
 scroll-down = bspwm-desknext
@@ -199,6 +199,17 @@ type          = internal/backlight
 card          = intel_backlight
 enable-scroll = true
 label         =  %percentage%%
+
+[module/pomod]
+type = custom/script
+exec = ~/.config/polybar/scripts/pomod.sh tail '' 5
+tail = true
+
+click-left = ~/.config/polybar/scripts/pomod.sh new 25 'Pomo session' 'notify-send "Session finished"' ; ~/.config/polybar/scripts/pomod.sh update %pid%
+click-middle = ~/.config/polybar/scripts/pomod.sh cancel ; ~/.config/polybar/scripts/pomod.sh update %pid%
+click-right = ~/.config/polybar/scripts/pomod.sh new 5 'Pomo break' 'notify-send "Break finished"' ; ~/.config/polybar/scripts/pomod.sh update %pid%
+scroll-up = ~/.config/polybar/scripts/pomod.sh increase 60 || ~/.config/polybar/scripts/pomod.sh new 1 'TIMER:' 'notify-send -u critical "Timer expired."' ; ~/.config/polybar/scripts/pomod.sh update %pid%
+scroll-down = ~/.config/polybar/scripts/pomod.sh increase -60 ; ~/.config/polybar/scripts/pomod.sh update %pid%
 
 [settings]
 screenchange-reload     = true
