@@ -92,19 +92,48 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              {description = "lua execute prompt", group = "awesome"}),
+    -- awful.key({ modkey }, "x",
+    --           function ()
+    --               awful.prompt.run {
+    --                 prompt       = "Run Lua code: ",
+    --                 textbox      = awful.screen.focused().mypromptbox.widget,
+    --                 exe_callback = awful.util.eval,
+    --                 history_path = awful.util.get_cache_dir() .. "/history_eval"
+    --               }
+    --           end,
+    --           {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+
+    -- Custom
+    awful.key({ modkey }, "F9", function () awful.spawn(
+        "pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-lineout"
+    ) end, {description = "switch to speakers", group = "launcher"}),
+    
+    awful.key({ modkey, "Shift" }, "F9", function () awful.spawn(
+        "pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-headphones"
+    ) end, {description = "switch to headphones", group = "launcher"}),
+    
+    awful.key({ altKey, "Shift" }, "F9", function () awful.spawn(
+        "rofi -show bt -modi bt:~/.config/rofi/bluetooth.sh -width 35 -lines 5"
+    ) end, {description = "bluetooth menu", group = "launcher"}),
+    
+    awful.key({ altKey, "Shift" }, "c", function () awful.spawn.with_shell(
+        "CM_LAUNCHER=rofi clipmenu"
+    ) end, {description = "clipmenu", group = "launcher"}),
+
+    awful.key({ altKey, "Shift" }, "p", function () awful.spawn(
+        "rofi -show power -modi power:~/.config/rofi/power-menu.sh -width 10 -lines 5"
+    ) end, {description = "power menu", group = "launcher"}),
+
+    awful.key({ }, "Print", function () awful.spawn(
+        "flameshot gui"
+    ) end, {description = "screenshot", group = "launcher"}),
+
+    awful.key({ modkey }, "x", function () awful.spawn(
+        "slock"
+    ) end, {description = "lock screen", group = "launcher"})
 )
 
 return globalkeys
