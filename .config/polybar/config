@@ -1,6 +1,9 @@
 [colors]
 background = #00282a36
+background_solid = #282a36
 foreground = #f8f8f2
+comment    = #6272A4
+selection  = #44475A
 black      = #282a36
 red	       = #ff5555
 green      = #50fa7b
@@ -76,16 +79,17 @@ label-focused-foreground = ${colors.pink}
 label-occupied           = %icon%
 label-urgent             = %icon%
 label-empty              = %icon%
+label-empty-foreground   = ${colors.comment}
 
 label-separator			 = "  "
 label-focused-padding    = 0
 
-ws-icon-0 = code;
-ws-icon-1 = web;
-ws-icon-2 = chat;
-ws-icon-3 = work;
-ws-icon-4 = media;
-ws-icon-5 = vidya;
+ws-icon-0 = web;
+ws-icon-1 = chat;
+ws-icon-2 = media;
+ws-icon-3 = vidya;
+ws-icon-4 = code;
+ws-icon-5 = work;
 ws-icon-6 = extra;
 ws-icon-7 = pray;
 ws-icon-8 = what;

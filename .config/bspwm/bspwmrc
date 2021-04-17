@@ -3,8 +3,6 @@
 # ------------------Variables-----------------
 
 PCHOST='sgt'
-HPHOST='sgt-hp'
-T440PHOST='t440p'
 
 TOP_PADDING=30
 YT_FLOAT_WIDTH=854
@@ -13,10 +11,18 @@ SCREEN_WIDTH=$(xdpyinfo | awk '/dimensions/{print $2}' | grep -Po "^\d+")
 SCREEN_HEIGHT=$(xdpyinfo | awk '/dimensions/{print $2}' | grep -Po "\d+$")
 YT_FLOAT_RECTANGLE=$YT_FLOAT_WIDTH\x$YT_FLOAT_HEIGHT+$(($SCREEN_WIDTH-$YT_FLOAT_WIDTH))+$TOP_PADDING
 
+# ---------- Conditional Startups-------------
+
+conditional_startup() {
+    pgrep -x sxhkd > /dev/null || sxhkd &
+    pgrep -x "polybar" > /dev/null || ~/.config/polybar/launch.sh &
+    pidof "firefox" > /dev/null || firefox &
+}
 
 # ----------------Shared startup--------------
 
 shared_startup() {
+    conditional_startup
     nitrogen --restore &
     telegram-desktop &
     discord &
@@ -33,7 +39,7 @@ shared_startup() {
 pc_startup() {
     picom -b --experimental-backends
     steam-native -silent &
-    mpd-discord-rpc &
+    # mpd-discord-rpc &
 }
 
 # --------------Laptop startup----------------
@@ -42,27 +48,19 @@ laptop_startup() {
     libinput-gestures-setup start
 }
 
-# ---------- Conditional Startups-------------
-
-pgrep -x sxhkd > /dev/null || sxhkd &
-pgrep -x "polybar" > /dev/null || ~/.config/polybar/launch.sh &
-pidof "firefox" > /dev/null || firefox &
-
 # --------------Shared config-----------------
 
 pc_bspwm_config() {
-    bspc monitor -n 0 -d code web chat work media vidya extra pray what
-    bspc config window_gap			        0	
     bspc config pointer_motion_interval     4ms
 }
 
 laptop_bspwm_config() {
-    bspc monitor -n 0 -d code web chat work media vidya extra pray what
-    bspc config window_gap			        0	
     bspc config pointer_motion_interval     8ms
 }
 
 shared_bspwm_config() {
+    bspc monitor -n 0 -d web chat media vidya code work extra pray what
+    bspc config window_gap			        0	
     bspc config top_padding			        $TOP_PADDING	
     bspc config bottom_padding		        0
     bspc config left_padding		        0
@@ -117,16 +115,16 @@ shared_bspwm_rules() {
 
 if [ $(hostname) = $PCHOST ]; then
     cat $XDG_CONFIG_HOME/sxhkd/sxhkdrc_shared $XDG_CONFIG_HOME/sxhkd/sxhkdrc_pc > $XDG_CONFIG_HOME/sxhkd/sxhkdrc 
-    shared_startup
     shared_bspwm_config
     shared_bspwm_rules
-    pc_startup
     pc_bspwm_config
+    shared_startup
+    pc_startup
 else
     cat $XDG_CONFIG_HOME/sxhkd/sxhkdrc_shared $XDG_CONFIG_HOME/sxhkd/sxhkdrc_laptop > $XDG_CONFIG_HOME/sxhkd/sxhkdrc 
-    shared_startup
     shared_bspwm_config
     shared_bspwm_rules
-    laptop_startup 
     laptop_bspwm_config
+    shared_startup
+    laptop_startup 
 fi
