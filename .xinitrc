@@ -37,4 +37,6 @@ fi
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
+xset m 0 0 
+
 exec bspwm

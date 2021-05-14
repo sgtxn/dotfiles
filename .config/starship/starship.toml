@@ -10,3 +10,6 @@ truncation_length = 1
 
 [golang]
 disabled = true
+
+[gcloud]
+disabled = true
