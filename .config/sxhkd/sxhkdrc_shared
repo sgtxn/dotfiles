@@ -23,7 +23,7 @@ super + F5
 #
 
 # quit/restart bspwm
-super + alt + {q,r}
+super + alt + control + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
