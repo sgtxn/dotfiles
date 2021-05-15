@@ -42,12 +42,6 @@ pc_startup() {
     # mpd-discord-rpc &
 }
 
-bt_startup(){
-    bluetoothctl power on
-    bluetoothctl disconnect
-    bluetoothctl connect 04:FE:A1:C7:2B:07
-}
-
 # --------------Laptop startup----------------
 
 laptop_startup() {
@@ -126,7 +120,6 @@ if [ $(hostname) = $PCHOST ]; then
     pc_bspwm_config
     shared_startup
     pc_startup
-    bt_startup &
 else
     cat $XDG_CONFIG_HOME/sxhkd/sxhkdrc_shared $XDG_CONFIG_HOME/sxhkd/sxhkdrc_laptop > $XDG_CONFIG_HOME/sxhkd/sxhkdrc 
     shared_bspwm_config
