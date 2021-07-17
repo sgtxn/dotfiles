@@ -39,6 +39,5 @@ export SSH_AUTH_SOCK
 
 xset m 0 0 
 
-[[ -f ~/.config/.Xmodmap ]] && xmodmap ~/.config/.Xmodmap
-
+xrandr --output HDMI-0 --off
 exec bspwm
