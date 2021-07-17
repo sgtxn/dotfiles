@@ -125,10 +125,10 @@ type  = custom/script
 tail  = true
 label = %output%
 
-exec             = ~/.config/polybar/scripts/pulse.bash listen
+exec             = ~/.config/polybar/scripts/pulse.bash --format "\$SINK_NICKNAME \$VOL_LEVEL" --sink-nickname "alsa_output.pci-0000_28_00.4.analog-stereo:" --sink-nickname "bluez_output.04_FE_A1_C7_2B_07.a2dp-sink:" listen
 click-right      = exec pavucontrol &
 click-left       = ~/.config/polybar/scripts/pulse.bash togmute
-click-middle     = ~/.config/polybar/scripts/pulse.bash next-sink
+click-middle     = ~/.config/polybar/scripts/pulse.bash --sink-blacklist "alsa_output.usb-Samson_Technologies_Samson_GoMic-00.analog-stereo","alsa_output.pci-0000_26_00.1.hdmi-stereo" next-sink
 scroll-up        = ~/.config/polybar/scripts/pulse.bash up
 scroll-down      = ~/.config/polybar/scripts/pulse.bash down
 label-padding    = 0 
