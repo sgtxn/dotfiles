@@ -1,5 +1,7 @@
 super + F9
-    pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-lineout
+    pactl set-default-sink bluez_output.04_FE_A1_C7_2B_07.a2dp-sink
+    #pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-lineout
 
 super + shift + F9
-    pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-headphones
+    pactl set-default-sink alsa_output.pci-0000_28_00.4.analog-stereo
+    #pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-headphones
