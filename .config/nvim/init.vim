@@ -16,7 +16,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
 call plug#end()
 
-" dracula theme
+" theme
     set termguicolors 
     colorscheme dracula
 
