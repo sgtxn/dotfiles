@@ -14,11 +14,13 @@ Plug 'powerman/vim-plugin-ruscmd'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
+"Plug 'morhetz/gruvbox'
 call plug#end()
 
 " theme
     set termguicolors 
     colorscheme dracula
+    "autocmd vimenter * ++nested colorscheme gruvbox
 
 " Some basics:
 	nnoremap c "_c
