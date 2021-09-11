@@ -46,7 +46,7 @@ scroll-down = bspwm-desknext
 tray-detached = false
 tray-offset-x = 0
 tray-offset-y = -3
-tray-position = right
+tray-position = none
 tray-padding  = 4
 tray-maxsize  = 24
 tray-scale    = 1.0
@@ -61,14 +61,14 @@ inherit = bar/pc
 
 modules-left   = date window 
 modules-center = bspwm
-modules-right  = backlight battery keyboard audio 
+modules-right  = keyboard backlight battery audio 
 
 [bar/hp]
 inherit = bar/pc
 
 modules-left   = date window 
 modules-center = bspwm
-modules-right  = backlight battery keyboard audio 
+modules-right  = keyboard backlight battery audio 
 
 [module/bspwm]
 type                     = internal/bspwm
