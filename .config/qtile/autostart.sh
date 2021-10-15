@@ -3,11 +3,14 @@
 nitrogen --restore &
 telegram-desktop &
 discord &
+slack &
 xset r rate 350 60 &
+xsetroot -cursor_name left_ptr &
 nm-applet &
 systemctl --user start clipmenud.service &
 picom -b --experimental-backends
 GDK_SCALE=2 steam-native -silent &
+blueman-applet &
 
 # xsetroot -cursor_name left_ptr &
 # mpd-discord-rpc &

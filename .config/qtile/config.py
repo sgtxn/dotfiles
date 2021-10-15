@@ -91,10 +91,10 @@ keys = [
     Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(), desc='toggle fullscreen'),
     
     Key([mod], "F9", 
-        lazy.spawn("pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-lineout"), 
+        lazy.spawn("pactl set-default-sink bluez_output.04_FE_A1_C7_2B_07.a2dp-sink"), 
         desc='switch to speakers'),
     Key([mod, "shift"], "F9", 
-        lazy.spawn("pactl set-sink-port alsa_output.pci-0000_28_00.4.analog-stereo analog-output-headphones"), 
+        lazy.spawn("pactl set-default-sink alsa_output.pci-0000_28_00.4.analog-stereo"), 
         desc='switch to headphones'),
     Key(["mod1", "shift"], "F9", 
         lazy.spawn("rofi -show bt -modi bt:~/.config/rofi/bluetooth.sh -width 35 -lines 5")),
