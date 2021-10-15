@@ -40,12 +40,12 @@ modules-left   = date window
 modules-center = bspwm
 modules-right  = pomod keyboard audio-better 
 
-scroll-up   = bspwm-deskprev
-scroll-down = bspwm-desknext
+scroll-up   = bspc desktop -f prev.occupied
+scroll-down = bspc desktop -f next.occupied
 
 tray-detached = false
 tray-offset-x = 0
-tray-offset-y = 0
+tray-offset-y = -2
 tray-position = right
 tray-padding  = 4
 tray-maxsize  = 24

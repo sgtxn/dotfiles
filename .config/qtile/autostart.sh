@@ -7,7 +7,7 @@ xset r rate 350 60 &
 nm-applet &
 systemctl --user start clipmenud.service &
 picom -b --experimental-backends
-steam-native -silent &
+GDK_SCALE=2 steam-native -silent &
 
 # xsetroot -cursor_name left_ptr &
 # mpd-discord-rpc &

@@ -31,6 +31,7 @@ import socket
 import subprocess
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile import qtile
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -46,7 +47,7 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(),
+    Key([mod], "space", lazy.group.next_window(),
         desc="Move window focus to other window"),
 
     # Move windows between left/right columns or move up/down in current stack.
@@ -85,7 +86,7 @@ keys = [
 
     Key([mod, "mod1"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "mod1"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawn("rofi -modi drun -show drun -width 30"), desc="Launch rofi"),
+    Key([mod], "z", lazy.spawn("rofi -modi drun -show drun -width 30"), desc="Launch rofi"),
     Key([mod], "f", lazy.window.toggle_floating(), desc='toggle floating'),
     Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(), desc='toggle fullscreen'),
     
@@ -105,24 +106,51 @@ keys = [
 ]
 
 groups = [
-    Group("1", matches=[Match(wm_class=["Code"])]),
-    Group("2", matches=[Match(wm_class=["firefox"])]),
+    Group("1", matches=[Match(wm_class=["firefox"])]),
+    Group("2", matches=[Match(wm_class=["TelegramDesktop", "Skype", "discord"])]),
     Group("3", matches=[Match(wm_class=["TelegramDesktop", "Skype", "discord"])]),
-    Group("4", matches=[Match(wm_class=["Insomnia"])]),
-    Group("5"),
-    Group("6", matches=[Match(wm_class=["Lutris", "Steam"])]),
-    Group("7"),
-    Group("8"),
+    Group("4", matches=[Match(wm_class=["Lutris", "Steam"])]),
+    Group("Q", matches=[Match(wm_class=[""])]),
+    Group("W", matches=[Match(wm_class=["Lutris", "Steam"])]),
+    Group("E", matches=[Match(wm_class=["Insomnia"])]),
+    Group("R"),
     Group("9"),
     ]
+# 1
+keys.append(Key([mod], "1", lazy.group["1"].toscreen()))
+keys.append(Key([mod, "shift"], "1", lazy.window.togroup("1")))
+# 2
+keys.append(Key([mod], "2", lazy.group["2"].toscreen()))
+keys.append(Key([mod, "shift"], "2", lazy.window.togroup("2")))
+# 3
+keys.append(Key([mod], "3", lazy.group["3"].toscreen()))
+keys.append(Key([mod, "shift"], "3", lazy.window.togroup("3")))
+# 4
+keys.append(Key([mod], "4", lazy.group["4"].toscreen()))
+keys.append(Key([mod, "shift"], "4", lazy.window.togroup("4")))
+# 5
+keys.append(Key([mod], "q", lazy.group["Q"].toscreen()))
+keys.append(Key([mod, "shift"], "q", lazy.window.togroup("Q")))
+# 6
+keys.append(Key([mod], "w", lazy.group["W"].toscreen()))
+keys.append(Key([mod, "shift"], "w", lazy.window.togroup("W")))
+# 7
+keys.append(Key([mod], "e", lazy.group["E"].toscreen()))
+keys.append(Key([mod, "shift"], "e", lazy.window.togroup("E")))
+# 8
+keys.append(Key([mod], "r", lazy.group["R"].toscreen()))
+keys.append(Key([mod, "shift"], "r", lazy.window.togroup("R")))
+# 9
+keys.append(Key([mod], "5", lazy.group["9"].toscreen()))
+keys.append(Key([mod, "shift"], "5", lazy.window.togroup("9")))
 
-for i, group in enumerate(groups, 1):
-    keys.append(Key([mod], str(i), lazy.group[group.name].toscreen()))
-    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(group.name)))
+# for i, group in enumerate(groups, 1):
+#     keys.append(Key([mod], str(i), lazy.group[group.name].toscreen()))
+#     keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(group.name)))
 
 widget_defaults = dict(
     font='mononoki Nerd Font',
-    fontsize=15,
+    fontsize=18,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -142,20 +170,21 @@ colors = [
         ] 
 
 layout_theme = {
-    "border_width": 2,
+    "border_width": 3,
     "margin": 0,
     "border_focus": colors[8][1],
-    "border_normal": colors[1][1]
+    "border_normal": colors[1][1],
+    "single_border_width": 0,
 }
 
 layouts = [
+    layout.MonadTall(**layout_theme),
     layout.Columns(**layout_theme),
     layout.Floating(**layout_theme),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(**layout_theme, num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(**layout_theme),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -164,21 +193,72 @@ layouts = [
     # layout.Zoomy(),
     layout.Max(**layout_theme),
 ]
+def parse_func(text): 
+    replace_tuples = [
+        (" - Visual Studio Code", "  "), 
+        (" — Mozilla Firefox", "  "),
+    ]
+    for tuple in replace_tuples:
+        if tuple[0] in text:
+            text = tuple[1] + text.strip().replace(tuple[0], "")
+            return text
+
+    add_tuples = [
+        ("Telegram", "  "), 
+        ("Alacritty", "  "),
+        ("Discord", " "),
+        ("Slack", "  "),
+    ]
+    for tuple in add_tuples:
+        if tuple[0] in text:
+            text = tuple[1] + text.strip()
+            return text
+    return text
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(
+                widget.Clock(
                     padding = 8,
-                    foreground = colors[2],
+                    format = '%a %H:%M',
+                    background = colors[0],
+                    mouse_callbacks={
+                        'Button4': lambda: qtile.current_screen.cmd_prev_group(skip_empty=True),
+                        'Button5': lambda: qtile.current_screen.cmd_next_group(skip_empty=True),
+                        },
+                ),
+                widget.TaskList(
+                    background = colors[0],
+                    border = colors[1],
+                    borderwidth = 0,
+                    highlight_method = 'block',
+                    padding_x = 10,
+                    parse_text = parse_func,
+                    icon_size = 0,
+                    max_title_width = 400,
+                    rounded = True,
+                    mouse_callbacks={
+                        'Button4': lambda: qtile.current_screen.cmd_prev_group(skip_empty=True),
+                        'Button5': lambda: qtile.current_screen.cmd_next_group(skip_empty=True),
+                        },
+                ),
+                widget.Prompt(
                     background = colors[0]
                 ),
+                widget.Spacer(
+                    background = colors[0],
+                    mouse_callbacks={
+                        'Button4': lambda: qtile.current_screen.cmd_prev_group(skip_empty=True),
+                        'Button5': lambda: qtile.current_screen.cmd_next_group(skip_empty=True),
+                        },
+                    ),
                 widget.GroupBox(
                     active = colors[2],
                     borderwidth = 2,
                     disable_drag = True,
                     inactive = colors[1],
+                    hide_unused = True,
                     highlight_color = colors[2],
                     highlight_method = "border",
                     this_current_screen_border = colors[8],
@@ -187,16 +267,20 @@ screens = [
                     other_screen_border = colors[8],
                     background = colors[0]
                 ),
-                widget.Prompt(
-                    background = colors[0]
-                ),
-                widget.TaskList(
+                widget.Spacer(
                     background = colors[0],
-                    border = colors[8],
-                    borderwidth = 2,
-                    icon_size = 0,
-                    max_title_width = 300,
-                ),
+                    mouse_callbacks={
+                        'Button4': lambda: qtile.current_screen.cmd_prev_group(skip_empty=True),
+                        'Button5': lambda: qtile.current_screen.cmd_next_group(skip_empty=True),
+                        },
+                    ),
+                widget.Spacer(
+                    background = colors[0],
+                    mouse_callbacks={
+                        'Button4': lambda: qtile.current_screen.cmd_prev_group(skip_empty=True),
+                        'Button5': lambda: qtile.current_screen.cmd_next_group(skip_empty=True),
+                        },
+                    ),
                 widget.Chord(
                     chords_colors={
                         'launch': ("#ff0000", "#ffffff"),
@@ -204,20 +288,33 @@ screens = [
                     name_transform=lambda name: name.upper(),
                     background=colors[0]
                 ),
+                widget.GenPollText(
+                    background = colors[0],
+                    func = lambda: subprocess.check_output(["xkb-switch"]).decode("utf-8").rstrip().upper(),
+                    update_interval = 0.1,
+                    fontsize = 18,
+                    padding = 6
+                ),
                 widget.Systray(
                     background = colors[0],
                     icon_size = 22,
-                    padding = 4
+                    padding = 6
                 ),
                 widget.Volume(
-                    padding = 8,
-                    format = '%a %H:%M',
+                    padding = 10,
+                    fmt = ' {}',
                     background = colors[0],
                 ),
-                widget.Clock(
-                    padding = 8,
-                    format = '%a %H:%M',
+                # widget.CurrentLayout(
+                #     padding = 8,
+                #     foreground = colors[2],
+                #     background = colors[0]
+                # ),
+                widget.CurrentLayoutIcon(
+                    padding = 4,
+                    foreground = colors[2],
                     background = colors[0],
+                    scale = 0.8,
                 ),
             ],
             28,
@@ -253,6 +350,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='Wine'),  # wine floating
     Match(title='branchdialog'),  # gitk
     Match(title='pinentry'),  # GPG key password entry
+    Match(title='MEGAsync'),  
 ],**layout_theme)
 auto_fullscreen = True
 focus_on_window_activation = "focus"
