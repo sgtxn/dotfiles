@@ -1,20 +1,19 @@
 #!/usr/bin/env bash 
 
-nitrogen --restore &
-telegram-desktop &
-discord &
-slack &
 xset r rate 350 60 &
 xsetroot -cursor_name left_ptr &
-nm-applet &
-systemctl --user start clipmenud.service &
+nitrogen --restore &
 picom -b --experimental-backends
-GDK_SCALE=2 steam-native -silent &
+
+nm-applet &
 blueman-applet &
 
-# xsetroot -cursor_name left_ptr &
+systemctl --user start clipmenud.service &
+telegram-desktop &
+GDK_SCALE=2 steam-native -silent &
+
 # mpd-discord-rpc &
 # wmname compiz &
-# setxkbmap -layout us,ru &
 
 pidof "firefox" > /dev/null || firefox &
+if [ $(date +%u) -lt 6 ]; then slack & else discord & fi

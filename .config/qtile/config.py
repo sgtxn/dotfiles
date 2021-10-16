@@ -26,20 +26,18 @@
 
 from typing import List  # noqa: F401
 
+import asyncio
 import os
-import socket
 import subprocess
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile import qtile
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
 terminal = guess_terminal()
-
-def clipmenu_spawn(qtile):
-    os.system("CM_LAUNCHER=rofi clipmenu")
+wmname = "LG3D"
 
 keys = [
     # Switch between windows
@@ -86,7 +84,6 @@ keys = [
 
     Key([mod, "mod1"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "mod1"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "z", lazy.spawn("rofi -modi drun -show drun -width 30"), desc="Launch rofi"),
     Key([mod], "f", lazy.window.toggle_floating(), desc='toggle floating'),
     Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(), desc='toggle fullscreen'),
     
@@ -102,7 +99,17 @@ keys = [
     Key([], "Print", lazy.spawn("flameshot gui")),
     Key(["mod1", "shift"], "p", 
         lazy.spawn("rofi -show power -modi power:~/.config/rofi/power-menu.sh -width 10 -lines 5")),
-    Key(["mod1", "shift"], "c", lazy.function(clipmenu_spawn)),
+    Key(["mod1", "shift"], "c", lazy.spawn("sh -c 'CM_LAUNCHER=rofi clipmenu'")),
+    KeyChord([mod], "s", [
+        Key([], "space", lazy.spawn("sh -c 'xkb-switch -s us; rofi -modi drun -show drun -icon-theme \"Papirus\" -show-icons'")),
+        Key([], "r", lazy.spawn("sh -c 'xkb-switch -s us; rofi -modi drun -show drun -icon-theme \"Papirus\" -show-icons'")),
+        Key([], "c", lazy.spawn("code")),
+        Key([], "i", lazy.spawn("insomnia")),
+        Key([], "f", lazy.spawn("firefox")),
+        Key([], "g", lazy.spawn("chromium")),
+        Key([], "m", lazy.spawn("spotify")),
+        Key([], "n", lazy.spawn("nemo")),
+    ]),
 ]
 
 groups = [
@@ -110,11 +117,11 @@ groups = [
     Group("2", matches=[Match(wm_class=["TelegramDesktop", "Skype", "discord", "Slack"])]),
     Group("3", matches=[Match(wm_class=["Chromium"])]),
     Group("4", matches=[Match(wm_class=["Lutris", "Steam"])]),
-    Group("Q"),
+    Group("Q", matches=[Match(wm_class=["Code"])]),
     Group("W"),
     Group("E", matches=[Match(wm_class=["Insomnia"])]),
     Group("R"),
-    Group("9"),
+    Group("5"),
     ]
 # 1
 keys.append(Key([mod], "1", lazy.group["1"].toscreen()))
@@ -141,8 +148,8 @@ keys.append(Key([mod, "shift"], "e", lazy.window.togroup("E")))
 keys.append(Key([mod], "r", lazy.group["R"].toscreen()))
 keys.append(Key([mod, "shift"], "r", lazy.window.togroup("R")))
 # 9
-keys.append(Key([mod], "5", lazy.group["9"].toscreen()))
-keys.append(Key([mod, "shift"], "5", lazy.window.togroup("9")))
+keys.append(Key([mod], "5", lazy.group["5"].toscreen()))
+keys.append(Key([mod, "shift"], "5", lazy.window.togroup("5")))
 
 # for i, group in enumerate(groups, 1):
 #     keys.append(Key([mod], str(i), lazy.group[group.name].toscreen()))
@@ -174,20 +181,22 @@ layout_theme = {
     "margin": 0,
     "border_focus": colors[8][1],
     "border_normal": colors[1][1],
+    "border_focus_stack": colors[7][1],
+    "border_normal_stack": colors[1][1],
     "single_border_width": 0,
 }
 
 layouts = [
-    layout.MonadTall(**layout_theme),
+    # layout.Stack(**layout_theme, num_stacks=2),
+    # layout.MonadTall(**layout_theme),
     layout.Columns(**layout_theme),
     layout.Floating(**layout_theme),
     # Try more layouts by unleashing below layouts.
-    # layout.Stack(**layout_theme, num_stacks=2),
-    # layout.Bsp(),
+    # layout.Bsp(**layout_theme,ratio=2),
     # layout.Matrix(),
     # layout.MonadWide(),
     # layout.RatioTile(),
-    # layout.Tile(),
+    # layout.Tile(**layout_theme,add_after_last=True),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
@@ -281,13 +290,6 @@ screens = [
                         'Button5': lambda: qtile.current_screen.cmd_next_group(skip_empty=True),
                         },
                     ),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                    background=colors[0]
-                ),
                 widget.GenPollText(
                     background = colors[0],
                     func = lambda: subprocess.check_output(["xkb-switch"]).decode("utf-8").rstrip().upper(),
@@ -355,11 +357,20 @@ floating_layout = layout.Floating(float_rules=[
 auto_fullscreen = True
 focus_on_window_activation = "focus"
 
+@hook.subscribe.setgroup
+def focus_under_pointer():
+    r = qtile.core.conn.conn.core.QueryPointer(qtile.core._root.wid).reply()
+    win = qtile.windows_map.get(r.child, None)
+    if win and win.group is qtile.current_group:
+        win.group.focus(win, False)
+
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~')
     subprocess.Popen([home + '/.config/qtile/autostart.sh'])
 
-# We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
-# java that happens to be on java's whitelist.
-wmname = "LG3D"
+@hook.subscribe.client_new
+async def move_spotify(client):
+    await asyncio.sleep(0.05)
+    if client.name == 'Spotify':
+        client.togroup("5")
