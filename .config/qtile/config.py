@@ -107,11 +107,11 @@ keys = [
 
 groups = [
     Group("1", matches=[Match(wm_class=["firefox"])]),
-    Group("2", matches=[Match(wm_class=["TelegramDesktop", "Skype", "discord"])]),
-    Group("3", matches=[Match(wm_class=["TelegramDesktop", "Skype", "discord"])]),
+    Group("2", matches=[Match(wm_class=["TelegramDesktop", "Skype", "discord", "Slack"])]),
+    Group("3", matches=[Match(wm_class=["Chromium"])]),
     Group("4", matches=[Match(wm_class=["Lutris", "Steam"])]),
-    Group("Q", matches=[Match(wm_class=[""])]),
-    Group("W", matches=[Match(wm_class=["Lutris", "Steam"])]),
+    Group("Q"),
+    Group("W"),
     Group("E", matches=[Match(wm_class=["Insomnia"])]),
     Group("R"),
     Group("9"),
