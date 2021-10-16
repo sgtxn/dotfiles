@@ -204,8 +204,10 @@ layouts = [
 ]
 def parse_func(text): 
     replace_tuples = [
-        (" - Visual Studio Code", "  "), 
+        (" - Visual Studio Code", "  "), 
         (" — Mozilla Firefox", "  "),
+        (" - Chromium", "  "),
+        ("Insomnia - ", " "),
     ]
     for tuple in replace_tuples:
         if tuple[0] in text:
@@ -222,6 +224,8 @@ def parse_func(text):
         if tuple[0] in text:
             text = tuple[1] + text.strip()
             return text
+
+    text = "  " + text.strip()
     return text
 
 screens = [
@@ -248,9 +252,12 @@ screens = [
                     max_title_width = 400,
                     rounded = True,
                     mouse_callbacks={
+                        'Button2': lambda: qtile.widgets_map["tasklist"].clicked.kill(),
+                        'Button3': lambda: qtile.current_window.cmd_toggle_maximize(),
                         'Button4': lambda: qtile.current_screen.cmd_prev_group(skip_empty=True),
                         'Button5': lambda: qtile.current_screen.cmd_next_group(skip_empty=True),
                         },
+                    # txt_minimized = ' ',
                 ),
                 widget.Prompt(
                     background = colors[0]
