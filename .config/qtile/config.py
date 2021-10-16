@@ -381,4 +381,5 @@ async def move_spotify(client):
     await asyncio.sleep(0.05)
     if client.name == 'Spotify':
         client.togroup("5")
-    # focus_under_pointer()
+    if client.floating == False:
+        focus_under_pointer()
