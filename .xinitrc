@@ -40,5 +40,4 @@ export SSH_AUTH_SOCK
 xset m 0 0 
 
 xrandr --output HDMI-0 --off
-qtile start
-# exec bspwm
+exec bspwm

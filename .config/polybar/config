@@ -30,7 +30,7 @@ padding-left  = 1
 padding-right = 1 
 module-margin = 1
 
-font-0 = "mononoki:size=12;0"
+font-0 = "mononoki:size=13;1"
 font-1 = "Font Awesome 5 Free:style=Solid:size=12;0"
 font-2 = "Font Awesome 5 Free:style=Regular:size=12;0"
 font-3 = "Font Awesome 5 Brands:style=Regular:size=12;0"
@@ -38,7 +38,7 @@ font-4 = "Noto Sans CJK JP:size=10:weight=bold:antialias=true;0"
 
 modules-left   = date window
 modules-center = bspwm
-modules-right  = pomod keyboard audio-better 
+modules-right  = memory keyboard audio-better 
 
 scroll-up   = bspc desktop -f prev.occupied
 scroll-down = bspc desktop -f next.occupied
@@ -52,7 +52,7 @@ tray-maxsize  = 24
 tray-scale    = 1.0
 tray-background = ${colors.background}
 
-;wm-restack        = bspwm
+wm-restack        = bspwm
 enable-ipc         = true
 ;override-redirect = true
 
@@ -76,25 +76,35 @@ format                   = <label-state> <label-mode>
 
 enable-click             = true
 
-label-focused            = %icon% %name%
+label-focused            = %icon%
+; label-focused            = %icon% %name%
 label-focused-foreground = ${colors.pink}
 label-occupied           = %icon%
 label-urgent             = %icon%
 label-empty              = %icon%
 label-empty-foreground   = ${colors.comment}
 
-label-separator			 = "  "
+label-separator			 = " "
 label-focused-padding    = 0
 
-ws-icon-0 = web;
-ws-icon-1 = chat;
-ws-icon-2 = media;
-ws-icon-3 = vidya;
-ws-icon-4 = code;
-ws-icon-5 = work;
-ws-icon-6 = extra;
-ws-icon-7 = pray;
-ws-icon-8 = what;
+ws-icon-0 = web;1
+ws-icon-1 = chat;2
+ws-icon-2 = media;3
+ws-icon-3 = vidya;4
+ws-icon-4 = code;Q
+ws-icon-5 = work;W
+ws-icon-6 = extra;E
+ws-icon-7 = pray;R
+ws-icon-8 = what;5
+; ws-icon-0 = web;
+; ws-icon-1 = chat;
+; ws-icon-2 = media;
+; ws-icon-3 = vidya;
+; ws-icon-4 = code;
+; ws-icon-5 = work;
+; ws-icon-6 = extra;
+; ws-icon-7 = pray;
+; ws-icon-8 = what;
 ws-icon-default = ♟
 
 
@@ -205,6 +215,12 @@ type          = internal/backlight
 card          = intel_backlight
 enable-scroll = true
 label         =  %percentage%%
+
+[module/memory]
+type          = internal/memory
+interval      = 3
+format        = <label>
+label         =  %gb_used%
 
 [settings]
 screenchange-reload     = true

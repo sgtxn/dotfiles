@@ -10,9 +10,35 @@ super + shift + Return
     alacritty --class term_float
 
 # program launcher
-super + space
+super + space ; space
     xkb-switch -s us; rofi -modi drun -show drun -icon-theme "Papirus" -show-icons
-#dmenu_run -h 30
+
+super + space ; c
+    code
+
+super + space ; d
+    discord
+
+super + space ; i
+    insomnia
+
+super + space ; f ; c
+    firefox -P chill
+
+super + space ; f ; w
+    firefox -P work
+
+super + space ; g
+    chromium
+
+super + space ; m
+    spotify
+
+super + space ; n
+    nemo
+
+super + space ; t
+    telegram-desktop
 
 # make sxhkd reload its configuration files:
 super + F5
@@ -49,7 +75,7 @@ super + g
 
 # set the window state
 super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+	bspc node -t {tiled,pseudo_tiled,\~floating,fullscreen}
 
 # set the node flags
 super + ctrl + {m,x,y,z}
@@ -162,7 +188,7 @@ alt + shift + 2
     export WORKPATH=~/go/src/playground; rofi -show projects -modi projects:~/.config/rofi/projects.sh
 
 alt + shift + p
-    rofi -show power -modi power:~/.config/rofi/power-menu.sh -width 10 -lines 5 
+    rofi -theme-str 'window \{width:10%; height:15%;\}' -show power -modi power:~/.config/rofi/power-menu.sh
 
 alt + shift + c
     CM_LAUNCHER=rofi clipmenu
@@ -175,3 +201,12 @@ alt + shift + F9
 
 super + F12
     dunstctl set-paused toggle
+
+#ctrl + space
+super + F1
+    dunstctl close-all
+
+#ctrl + grave
+super + F2
+    dunstctl history-pop
+
