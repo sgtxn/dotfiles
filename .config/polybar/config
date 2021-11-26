@@ -209,6 +209,7 @@ adapter = ADP1
 poll-interval     = 5
 label-discharging =  %percentage%%
 label-charging    =  +%percentage%%
+label-full        =  %percentage%%
 
 [module/backlight]
 type          = internal/backlight
