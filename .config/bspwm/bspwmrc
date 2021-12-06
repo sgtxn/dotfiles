@@ -24,11 +24,11 @@ conditional_startup() {
     if [ $(date +%u) -lt 6 ] && [[ "$currenttime" > "10:00" ]] && [[ "$currenttime" < "20:00" ]]
     then 
         slack & 
-        pidof "firefox" > /dev/null || firefox -P work &
+        pidof "firefox" > /dev/null || sed -i 's/Default=xqvhzbye.chill/Default=1pbyvskn.work/g' ~/.mozilla/firefox/profiles.ini && firefox -P work &
     else 
         pidof "slack" > /dev/null && killall slack; 
         discord & 
-        pidof "firefox" > /dev/null || firefox -P chill &
+        pidof "firefox" > /dev/null || sed -i 's/Default=1pbyvskn.work/Default=xqvhzbye.chill/g' ~/.mozilla/firefox/profiles.ini && firefox -P chill &
     fi
 }
 
@@ -51,7 +51,7 @@ shared_startup() {
 
 pc_startup() {
     picom -b --experimental-backends
-    steam-native -silent &
+    # steam-native -silent &
     # mpd-discord-rpc &
 }
 

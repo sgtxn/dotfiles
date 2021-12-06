@@ -23,10 +23,10 @@ super + space ; i
     insomnia
 
 super + space ; f ; c
-    firefox -P chill
+    sed -i 's/Default=1pbyvskn.work/Default=xqvhzbye.chill/g' ~/.mozilla/firefox/profiles.ini && firefox -P chill
 
 super + space ; f ; w
-    firefox -P work
+    sed -i 's/Default=xqvhzbye.chill/Default=1pbyvskn.work/g' ~/.mozilla/firefox/profiles.ini && firefox -P work
 
 super + space ; g
     chromium
@@ -38,7 +38,7 @@ super + space ; n
     nemo
 
 super + space ; t
-    telegram-desktop
+    pidof telegram-desktop > /dev/null && killall telegram-desktop || telegram-desktop
 
 # make sxhkd reload its configuration files:
 super + F5
