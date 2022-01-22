@@ -94,6 +94,7 @@ source ~/.config/aliasrc
 source ~/.profile
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+eval $(thefuck --alias)
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
