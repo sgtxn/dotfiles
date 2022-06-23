@@ -71,7 +71,7 @@
 #EndSection" > /etc/X11/xorg.conf.d/50-mouse-acceleration.conf'
 
 ## Basic aliased/hotkeyed software
-#yay -S exa alacritty rofi tldr xkb-switch nitrogen
+#yay -S exa alacritty rofi tldr xkb-switch nitrogen reflector
 #cp -r ~/Downloads/dotfiles/.config/rofi ~/.config/
 #cp -r ~/Downloads/dotfiles/.config/alacritty ~/.config/
 
@@ -99,3 +99,6 @@
 
 ## Development
 #yay -S visual-studio-code-bin k9s insomnia-bin dbeaver docker
+
+## File manager
+#yay -S nemo nemo-fileroller nemo-image-converter nemo-seahorse nemo-share nemo-preview
