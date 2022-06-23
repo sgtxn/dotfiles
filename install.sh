@@ -22,8 +22,8 @@
 #git config --global url.ssh://git@github.com/.insteadOf https://github.com/
 #git config --global credential.helper store
 #git config --global user.name "sgtxn"
-read -p "Github email: " email
-git config --global user.email "$email"
+#read -p "Github email: " email
+#git config --global user.email "$email"
 
 ## AUR
 #git clone https://aur.archlinux.org/yay.git
