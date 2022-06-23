@@ -19,6 +19,9 @@ alias work='cd ~/go/src/work/code'
 alias anime='sshfs sgtxn@192.168.11.13:/home/sgtxn/Hideyoshi/Anime /media/Anime -p 27315'
 alias osu='/home/sgtxn/Games/osu/osu/start.sh'
 alias cfgupd='config add -u; config commit -m "autoupd"; config push'
+alias rndcommit='git add -A && \
+  git commit -m "$(curl -s http://whatthecommit.com/index.txt)" && \
+  git push'
 
 alias mirror='sudo reflector --country Russia --country Finland --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias cp='cp -i'
