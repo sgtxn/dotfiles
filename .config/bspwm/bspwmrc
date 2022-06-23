@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+source ~/.zprofile
+
 # ------------------Variables-----------------
 
 PCHOST='sgt'
