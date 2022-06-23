@@ -99,6 +99,8 @@
 
 ## Development
 #yay -S visual-studio-code-bin k9s insomnia-bin dbeaver docker
+#sudo systemctl enable --now docker
+#sudo gpasswd -a sgtxn docker
 
 ## File manager
 #yay -S nemo nemo-fileroller nemo-image-converter nemo-seahorse nemo-share nemo-preview gvfs-smb 

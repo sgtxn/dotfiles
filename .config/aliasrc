@@ -6,29 +6,22 @@ alias \
 	cfx="vim ~/.Xresources" \
 	cfz="vim $ZDOTDIR/.zshrc" \
 	cfp="vim ~/.config/polybar/config" \
-    cfa="vim ~/.config/aliasrc"
+    	cfa="vim ~/.config/aliasrc"
 
-alias config="/usr/bin/git --git-dir=/home/sgtxn/.cfg/ --work-tree=/home/sgtxn"
-alias tvclone='nvidia-settings --assign CurrentMetaMode="DP-0: 2560x1440_144+0+0 {}, HDMI-0:3840x2160_60 +0+0 {viewportin=2560x1440, ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"'
-alias tvextend='nvidia-settings --assign CurrentMetaMode="DP-0: 2560x1440_144+0+0 {}, HDMI-0:3840x2160_60 +2560+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"'
 alias cr='code -r .'
 alias ls='exa --group-directories-first'
 alias lsa='exa -a --group-directories-first'
 alias uuid='uuidd -r | xclip -sel clip'
 alias work='cd ~/go/src/work/code'
-alias anime='sshfs sgtxn@192.168.11.13:/home/sgtxn/Hideyoshi/Anime /media/Anime -p 27315'
-alias osu='/home/sgtxn/Games/osu/osu/start.sh'
-alias cfgupd='config add -u; config commit -m "autoupd"; config push'
 alias rndcommit='git add -A && \
   git commit -m "$(curl -s http://whatthecommit.com/index.txt)" && \
   git push'
+alias cmt='read "msg?Commit message: " && git add . && git commit -m "$msg" && git push'
 
 alias mirror='sudo reflector --country Russia --country Finland --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias cp='cp -i'
 alias df='df -h'
 alias free='free -m'
-alias ssn='sudo killall charon-nm; shutdown now'
-alias sr='sudo killall charon-nm; sudo reboot'
 
 alias wttr='curl v2.wttr.in'
 alias yeet='sudo'
