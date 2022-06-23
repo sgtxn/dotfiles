@@ -16,7 +16,7 @@ alias work='cd ~/go/src/work/code'
 alias rndcommit='git add -A && \
   git commit -m "$(curl -s http://whatthecommit.com/index.txt)" && \
   git push'
-alias cmt='read "msg?Commit message: " && git add . && git commit -m "$msg" && git push'
+alias cmt='read "msg?Commit message: " && git add . && git commit -m $msg && git push'
 
 alias mirror='sudo reflector --country Russia --country Finland --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias cp='cp -i'
