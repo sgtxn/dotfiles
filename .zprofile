@@ -1,75 +1,35 @@
 export XDG_CONFIG_HOME=/home/sgtxn/.config
-export HOST=$(hostname)
-export QT_QPA_PLATFORMTHEME=qt5ct
-export EDITOR=vim
-export TERMINAL=alacritty
-export BROWSER=firefox
 export ZDOTDIR="$HOME/.config/zsh"
-
+export HOST=$(hostname)
 export PATH=~/.local/bin:~/go/bin:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 export GOPATH=~/go
-
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export XIM=fcitx
-
 export K9SCONFIG=/home/sgtxn/.config/k9s
 export STARSHIP_CONFIG=/home/sgtxn/.config/starship/starship.toml
+
+export EDITOR=vim
+export TERMINAL=alacritty
+export BROWSER=firefox
 
 # Man page color fix
 export LESS_TERMCAP_so=$(tput bold; tput setaf 0; tput setab 4)
 
-n ()
-{
-    # Block nesting of nnn in subshells
-    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
-        echo "nnn is already running"
-        return
-    fi
 
-    # The default behaviour is to cd on quit (nnn checks if NNN_TMPFILE is set)
-    # To cd on quit only on ^G, remove the "export" as in:
-    #     NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-    # NOTE: NNN_TMPFILE is fixed, should not be modified
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+# Aliases
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+alias cr='code -r .'
+alias ls='exa --group-directories-first'
+alias lsa='exa -a --group-directories-first'
+alias uuid='uuidgen | xclip -sel clip'
+alias work='cd ~/go/src/work/code'
+alias rndcommit='git add -A && \
+  git commit -m "$(curl -s http://whatthecommit.com/index.txt)" && \
+  git push'
 
-    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-    # stty start undef
-    # stty stop undef
-    # stty lwrap undef
-    # stty lnext undef
+alias mirror='sudo reflector --country Finland --country Sweden --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias cp='cp -i'
+alias df='df -h'
+alias free='free -m'
 
-    nnn "$@"
-
-    if [ -f "$NNN_TMPFILE" ]; then
-            . "$NNN_TMPFILE"
-            rm -f "$NNN_TMPFILE" > /dev/null
-    fi
-}
-
-export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --bind alt-j:down,alt-k:up"
-
-# CTRL-R - Paste the selected command from history into the command line
-fzf-history-widget() {
-  local selected num
-  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-  selected=( $(fc -rl 1 |
-    FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
-  local ret=$?
-  if [ -n "$selected" ]; then
-    num=$selected[1]
-    if [ -n "$num" ]; then
-      zle vi-fetch-history -n $num
-    fi
-  fi
-  zle reset-prompt
-  return $ret
-}
-zle     -N   fzf-history-widget
-bindkey '^R' fzf-history-widget
-
-__fzfcmd() {
-    echo "fzf-tmux -d${FZF_TMUX_HEIGHT:-40%}" || echo "fzf"
-}
+alias wttr='curl v2.wttr.in'
+alias yeet='sudo'

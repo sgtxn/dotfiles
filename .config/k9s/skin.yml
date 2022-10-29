@@ -59,7 +59,7 @@ k9s:
       modifyColor: *purple
       addColor: *green
       errorColor: *red
-      highlightcolor: *orange
+      highlightColor: *orange
       killColor: *comment
       completedColor: *comment
     # Border title styles.
@@ -83,8 +83,6 @@ k9s:
     table:
       fgColor: *foreground
       bgColor: *background
-      cursorFgColor: *foreground
-      cursorBgColor: *current_line
       # Header row styles.
       header:
         fgColor: *foreground

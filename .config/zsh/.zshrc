@@ -1,5 +1,6 @@
 # Theming section  
 autoload -U compinit colors zcalc
+autoload -U +X bashcompinit && bashcompinit
 colors
 
 PS1="%B%{$fg[magenta]%}[%{$fg[yellow]%}%1~%{$fg[magenta]%}] "
@@ -84,24 +85,35 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-r
 
+eval "$(direnv hook zsh)"
+eval "$(starship init zsh)"
+eval "$(thefuck --alias)"
+
+# CTRL-R - fzf command history
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --bind alt-j:down,alt-k:up"
+fzf-history-widget() {
+  local selected num
+  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+  selected=( $(fc -rl 1 |
+    FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
+  local ret=$?
+  if [ -n "$selected" ]; then
+    num=$selected[1]
+    if [ -n "$num" ]; then
+      zle vi-fetch-history -n $num
+    fi
+  fi
+  zle reset-prompt
+  return $ret
+}
+zle     -N   fzf-history-widget
+bindkey '^R' fzf-history-widget
+
 # Use beam shape cursor on startup.
 echo -ne '\e[5 q'
 # Use beam shape cursor for each new prompt.
 preexec() { echo -ne '\e[5 q' ;}
 
 source ~/.zprofile
-source ~/.config/aliasrc
-source ~/.profile
-eval "$(direnv hook zsh)"
-eval "$(starship init zsh)"
-eval $(thefuck --alias)
-
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/sgtxn/google-cloud-sdk/path.zsh.inc' ]; then . '/home/sgtxn/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/sgtxn/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/sgtxn/google-cloud-sdk/completion.zsh.inc'; fi
