@@ -90,6 +90,9 @@ eval "$(starship init zsh)"
 eval "$(thefuck --alias)"
 
 # CTRL-R - fzf command history
+__fzfcmd() {
+    echo "fzf-tmux -d${FZF_TMUX_HEIGHT:-40%}" || echo "fzf"
+}
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --bind alt-j:down,alt-k:up"
 fzf-history-widget() {
   local selected num
