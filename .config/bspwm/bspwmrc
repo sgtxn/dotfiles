@@ -1,39 +1,36 @@
 #!/usr/bin/bash
 
 shared_bspwm_config() {
-    bspc monitor -n 0 -d 1 2 3 4 5 6 7 8 9
-    bspc config window_gap			        0	
-    bspc config top_padding			        0	
-    bspc config bottom_padding		        0
-    bspc config left_padding		        0
-    bspc config right_padding		        0
-    bspc config border_radius               0 
+    bspc config window_gap		    0	
+    bspc config top_padding		    0	
+    bspc config bottom_padding		    0
+    bspc config left_padding		    0
+    bspc config right_padding		    0
     bspc config border_width                3
-    bspc config click_to_focus              false
+    bspc config click_to_focus              button1
     bspc config split_ratio                 0.5
     bspc config single_monocle              true
     bspc config borderless_monocle          true
     bspc config gapless_monocle             true
-    bspc config focus_by_distance           true
     bspc config focus_follows_pointer       true
-    bspc config history_aware_focus         true
+    bspc config focus_follows_monitor       true
+    bspc config pointer_follows_monitor     true
     #bspc config honor_size_hints           true
-    #bspc config top_monocle_padding		10
+    #bspc config top_monocle_padding	    10
     #bspc config right_monocle_padding	    50
     #bspc config bottom_monocle_padding	    10
     #bspc config left_monocle_padding	    50
-    bspc config pointer_modifier 		    mod4
-    bspc config pointer_action1 		    move
-    bspc config pointer_action2 		    resize_side
-    bspc config pointer_action3 		    resize_corner
+    bspc config pointer_modifier 	    mod4
+    bspc config pointer_action1 	    move
+    bspc config pointer_action2 	    resize_side
+    bspc config pointer_action3 	    resize_corner
     bspc config automatic_scheme            longest_side
     bspc config pointer_motion_interval     8ms
 
-    bspc config normal_border_color	       "#4c566a"
+    bspc config normal_border_color	   "#4c566a"
     bspc config active_border_color        "#81a1c1"
     bspc config presel_feedback_color      "#b48ead"
     bspc config focused_border_color       "#bd93f9"
-    bspc config urgent_border_color        "#dd2727"
 }
 
 shared_bspwm_rules() {
@@ -53,6 +50,9 @@ shared_bspwm_rules() {
 
 startup() {
     pgrep -x sxhkd > /dev/null || sxhkd &
+    pgrep -x firefox > /dev/null || firefox &
+    pgrep -x slack > /dev/null || slack &
+
     nitrogen --restore &
     xsetroot -cursor_name left_ptr &
     xset r rate 350 60 &
@@ -60,10 +60,32 @@ startup() {
     setxkbmap -layout us,ru &
 
     libinput-gestures-setup start
-    slack & 
-    firefox &
 }
 
+set_monitors() {
+	mons=$(xrandr | grep " connected " | awk '{ print$1 }')
+
+	if [[ ${#mons[@]} -gt 0 ]]; then
+	    echo "found multiple monitors"
+            for i in ${mons[@]}
+            do
+		if [ $i = "eDP1" ]; then
+		    echo "skipping laptop monitor"
+		    continue
+		else
+		    xrandr --output $i --primary --mode 2560x1440 --rotate normal --output eDP1 --mode 1920x1200 --rotate normal --below $i
+    	    	    bspc monitor $i -d 1 2 3 4 5 6 7 8
+		    echo "set up $i"
+		fi
+                echo $i;
+       	    done
+    	    bspc monitor eDP1 -d 9
+        else
+    	    bspc monitor -n 0 -d 1 2 3 4 5 6 7 8 9
+        fi
+}
+
+set_monitors
 shared_bspwm_config
 shared_bspwm_rules
 startup
