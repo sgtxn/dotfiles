@@ -29,7 +29,7 @@ super + space ; n
     nemo
 
 super + space; 1
-    notify-send "$(date '+%d %B %Y, %H:%M:%S %:z')" "$(acpi | grep 'Battery 0')" --app-name="sysinfo"
+    notify-send "$(date '+%d %B %Y, %H:%M:%S %:z')" "$(acpi | grep -v 'rate information unavailable')" --app-name="sysinfo"
 
 super + space; b
     blueman-manager
@@ -183,7 +183,7 @@ super + F2
     dunstctl history-pop
 
 XF86MonBrightness{Up,Down}
-  xbacklight {+,-}5%
+  xbacklight {+,-}5%; notify-send --app-name Backlight "$(xbacklight | grep -P --only-matching '^\d+')%"
 
 XF86AudioMute
   amixer sset Master toggle

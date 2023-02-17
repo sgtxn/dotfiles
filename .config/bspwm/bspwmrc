@@ -63,9 +63,9 @@ startup() {
 }
 
 set_monitors() {
-	mons=$(xrandr | grep " connected " | awk '{ print$1 }')
+	mons=($(xrandr | grep " connected " | awk '{ print$1 }'))
 
-	if [[ ${#mons[@]} -gt 0 ]]; then
+	if [[ ${#mons[@]} -gt 1 ]]; then
 	    echo "found multiple monitors"
             for i in ${mons[@]}
             do
