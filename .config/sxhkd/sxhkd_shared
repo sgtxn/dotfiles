@@ -1,0 +1,73 @@
+#
+# Chords
+#
+
+super + space ; space
+    xkb-switch -s us; rofi -show drun
+
+super + space ; c
+    code
+
+super + space ; s
+    pidof teams > /dev/null && killall teams || teams
+
+super + space ; i
+    insomnia
+
+super + space ; f
+    firefox
+
+super + space ; g
+    chromium
+
+super + space ; m
+    spotify
+
+super + space ; n
+    nemo
+
+super + space; 1
+    notify-send "$(date '+%d %B %Y, %H:%M:%S %:z')" "$(acpi | grep -v 'rate information unavailable')" --app-name="sysinfo"
+
+super + space; b
+    blueman-manager
+
+super + space ; t
+    pidof telegram-desktop > /dev/null && killall telegram-desktop || telegram-desktop
+
+#
+# Hotkeys
+#
+
+super + Return
+    alacritty
+
+super + shift + Return
+    alacritty --class float
+
+super + x
+	slock	
+
+control + Print
+	flameshot screen -c
+
+Print
+	flameshot gui
+
+super + F1
+    dunstctl close-all
+
+super + F2
+    dunstctl history-pop
+
+XF86MonBrightness{Up,Down}
+  xbacklight {+,-}5%; notify-send --app-name Backlight "$(xbacklight | grep -P --only-matching '^\d+')%"
+
+XF86AudioMute
+  amixer sset Master toggle
+
+XF86Audio{Raise,Lower}Volume
+  pulsemixer --change-volume {+,-}5
+
+XF86AudioMicMute
+  amixer sset Capture toggle
