@@ -1,6 +1,7 @@
 ---------------------------
 -- Aaayyeeeeoooo --
 ---------------------------
+local gears = require("gears")
 
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
@@ -11,24 +12,48 @@ local themes_path = gfs.get_configuration_dir() .. "themes/"
 
 local theme = {}
 
-theme.font          = "mononoki 12"
+theme.font = "mononoki 12"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
-theme.bg_systray    = theme.bg_normal
+local blue = "#8caaee"
+local flamingo = "#eebebe"
+local lavender = "#babbf1"
+local teal = "#81c8be"
+local mauve = "#ca9ee6"
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+local black_0 = "#232634"
+local black_3 = "#303446"
+local black_5 = "#414559"
+local text = "#c6d0f5"
+
+theme.bg_normal     = black_0
+theme.bg_focus      = black_3
+theme.bg_urgent     = flamingo
+theme.bg_minimize   = teal
+theme.bg_systray    = black_0
+
+theme.fg_normal     = text
+theme.fg_focus      = text
+theme.fg_urgent     = black_0
+theme.fg_minimize   = black_0
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(3)
-theme.border_normal = "#4c566a"
-theme.border_focus  = "#bd93f9"
-theme.border_marked = "#81a1c1"
+theme.border_normal = black_5
+theme.border_focus  = mauve
+theme.border_marked = blue
+
+theme.taglist_fg_focus = black_0
+theme.taglist_bg_focus = blue
+theme.taglist_bg_occupied = black_3
+theme.taglist_spacing = 5
+theme.taglist_shape = function(cr, width, height)
+	gears.shape.rounded_rect(cr, width, height, 5)
+end
+
+theme.tasklist_spacing = 10
+theme.tasklist_shape = function(cr, width, height)
+	gears.shape.rounded_rect(cr, width, height, 10)
+end
 
 -- There are other variable sets
 -- overriding the default one when
@@ -70,6 +95,6 @@ theme.awesome_icon = theme_assets.awesome_icon(
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
+theme.icon_theme = "Papirus-Dark"
 
 return theme

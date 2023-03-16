@@ -2,6 +2,9 @@
 # Chords
 #
 
+super + F5
+    pkill -USR1 -x sxhkd
+
 super + space ; space
     xkb-switch -s us; rofi -show drun
 
@@ -10,6 +13,9 @@ super + space ; c
 
 super + space ; s
     pidof teams > /dev/null && killall teams || teams
+
+super + space ; d
+    pidof Discord > /dev/null && killall Discord || discord
 
 super + space ; i
     insomnia
@@ -27,7 +33,7 @@ super + space ; n
     nemo
 
 super + space; 1
-    notify-send "$(date '+%d %B %Y, %H:%M:%S %:z')" "$(acpi | grep -v 'rate information unavailable')" --app-name="sysinfo"
+    notify-send --hint=string:x-dunst-stack-tag:time "$(date '+%d %B %Y, %H:%M:%S %:z')" "$(acpi | grep -v 'rate information unavailable')" --app-name="sysinfo"
 
 super + space; b
     blueman-manager
@@ -61,7 +67,7 @@ super + F2
     dunstctl history-pop
 
 XF86MonBrightness{Up,Down}
-  xbacklight {+,-}5%; notify-send --app-name Backlight "$(xbacklight | grep -P --only-matching '^\d+')%"
+  xbacklight {+,-}5%; notify-send --hint=string:x-dunst-stack-tag:backlight --app-name Backlight "$(xbacklight | grep -P --only-matching '^\d+')%"
 
 XF86AudioMute
   amixer sset Master toggle

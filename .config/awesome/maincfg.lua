@@ -7,6 +7,8 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 
+awesome.set_preferred_icon_size(36)
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -56,21 +58,24 @@ end)
 
 -- {{{ Wallpaper
 screen.connect_signal("request::wallpaper", function(s)
-    awful.wallpaper {
-        screen = s,
-        widget = {
-            {
-                image     = beautiful.wallpaper,
-                upscale   = true,
-                downscale = true,
-                widget    = wibox.widget.imagebox,
-            },
-            valign = "center",
-            halign = "center",
-            tiled  = false,
-            widget = wibox.container.tile,
-        }
-    }
+    gears.wallpaper.maximized(beautiful.wallpaper, s)
+    -- awful.wallpaper {
+    --     screen = s,
+    --     widget = {
+    --         {
+    --             image     = beautiful.wallpaper,
+    --             -- upscale   = true,
+    --             -- downscale = true,
+    --             widget    = wibox.widget.imagebox,
+    --             horizontal_fit_policy = "fit",
+    --             vertical_fit_policy   = "fit",
+    --         },
+    --         -- valign = "center",
+    --         -- halign = "center",
+    --         -- tiled  = false,
+    --         -- widget = wibox.container.tile,
+    --     }
+    -- }
 end)
 -- }}}
 
@@ -138,11 +143,36 @@ screen.connect_signal("request::desktop_decoration", function(s)
             awful.button({ }, 3, function() awful.menu.client_list { theme = { width = 250 } } end),
             awful.button({ }, 4, function() awful.client.focus.byidx(-1) end),
             awful.button({ }, 5, function() awful.client.focus.byidx( 1) end),
-        }
+        },
+        widget_template = {
+            {
+                {
+                    {
+                        {
+                            id     = 'icon_role',
+                            widget = wibox.widget.imagebox,
+                        },
+                        margins = 5,
+                        widget  = wibox.container.margin,
+                    },
+                    {
+                        id     = 'text_role',
+                        widget = wibox.widget.textbox,
+                    },
+                    layout = wibox.layout.fixed.horizontal,
+                },
+                left  = 5,
+                right = 5,
+                widget = wibox.container.margin
+            },
+            id     = 'background_role',
+            widget = wibox.container.background,
+        },
     }
 
     -- Create the wibox
     s.mywibox = awful.wibar {
+        height = 30,
         position = "top",
         screen   = s,
         widget   = {

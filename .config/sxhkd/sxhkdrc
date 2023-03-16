@@ -7,11 +7,17 @@ super + shift + Return
 super + space ; space
     xkb-switch -s us; rofi -show drun
 
+super + space ; d
+    pidof Discord > /dev/null && killall Discord || discord
+
 super + space ; c
     code
 
 super + space ; s
     pidof teams > /dev/null && killall teams || teams
+
+super + space ; l
+    pidof slack > /dev/null && killall slack || slack
 
 super + space ; i
     insomnia
@@ -36,9 +42,6 @@ super + space; b
 
 super + space ; t
     pidof telegram-desktop > /dev/null && killall telegram-desktop || telegram-desktop
-
-super + F5
-	pkill -USR1 -x sxhkd
 
 # quit/restart bspwm
 super + alt + control + {q,r}
@@ -183,7 +186,7 @@ super + F2
     dunstctl history-pop
 
 XF86MonBrightness{Up,Down}
-  xbacklight {+,-}5%; notify-send --app-name Backlight "$(xbacklight | grep -P --only-matching '^\d+')%"
+  dunstctl close; xbacklight {+,-}5%; notify-send --app-name Backlight "$(xbacklight | grep -P --only-matching '^\d+')%"
 
 XF86AudioMute
   amixer sset Master toggle

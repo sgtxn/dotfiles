@@ -1,6 +1,6 @@
 local awful = require "awful"
 local hotkeys_popup = require "awful.hotkeys_popup"
-local menubar = require "menubar"
+local naughty = require("naughty")
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
@@ -12,8 +12,28 @@ awful.keyboard.append_global_keybindings({
               {description = "quit awesome", group = "awesome"}),
     -- awful.key({ modkey }, "Return", function () awful.spawn(terminal) end,
     --           {description = "open a terminal", group = "launcher"}),
-    -- awful.key({ modkey }, "r",     function () awful.spawn.with_shell('xkb-switch -s us; rofi -show drun') end,
-    --           {description = "run prompt", group = "launcher"}),
+    awful.key({ modkey }, "y",     function () 
+        local tags = awful.screen.focused().selected_tags
+        for k, tag in pairs(tags) do
+            for kc, c in pairs(tag:clients()) do
+                if c.floating == true and c.first_tag.index == tag.index then
+                    c:lower()
+                end
+            end
+        end
+    end,
+              {description = "yeet bg windows", group = "launcher"}),
+    awful.key({ modkey, "Shift" }, "y",     function () 
+        local tags = awful.screen.focused().selected_tags
+        for k, tag in pairs(tags) do
+            for kc, c in pairs(tag:clients()) do
+                if c.floating == true and c.first_tag.index == tag.index then
+                    c:raise()
+                end
+            end
+        end
+    end,
+              {description = "unyeet bg windows", group = "launcher"}),
     awful.key({ modkey }, "b",     function () 
         local myscreen = awful.screen.focused()
         myscreen.mywibox.visible = not myscreen.mywibox.visible
