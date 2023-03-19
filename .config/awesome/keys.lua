@@ -1,6 +1,5 @@
 local awful = require "awful"
 local hotkeys_popup = require "awful.hotkeys_popup"
-local naughty = require("naughty")
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({

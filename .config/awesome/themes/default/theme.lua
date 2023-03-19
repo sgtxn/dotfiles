@@ -19,10 +19,11 @@ local flamingo = "#eebebe"
 local lavender = "#babbf1"
 local teal = "#81c8be"
 local mauve = "#ca9ee6"
+local peach = "#ef9f76"
 
 local black_0 = "#232634"
 local black_3 = "#303446"
-local black_5 = "#414559"
+local black_5 = "#51576d"
 local text = "#c6d0f5"
 
 theme.bg_normal     = black_0
@@ -47,12 +48,15 @@ theme.taglist_bg_focus = blue
 theme.taglist_bg_occupied = black_3
 theme.taglist_spacing = 5
 theme.taglist_shape = function(cr, width, height)
-	gears.shape.rounded_rect(cr, width, height, 5)
+	gears.shape.rounded_rect(cr, width, height, 3)
 end
 
+theme.tasklist_bg_normal = black_3
+-- theme.tasklist_fg_focus = black_0
+theme.tasklist_bg_focus = black_5
 theme.tasklist_spacing = 10
 theme.tasklist_shape = function(cr, width, height)
-	gears.shape.rounded_rect(cr, width, height, 10)
+	gears.shape.rounded_rect(cr, width, height, 3)
 end
 
 -- There are other variable sets

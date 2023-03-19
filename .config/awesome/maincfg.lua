@@ -87,7 +87,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
-mytray = wibox.layout.margin(wibox.widget.systray(), 5, 5, 5, 5)
+mytray = wibox.layout.margin(wibox.widget.systray(), 4, 4, 4, 4)
 -- mytray:set_base_size(24)
 beautiful.systray_icon_spacing = 5
 
@@ -172,25 +172,31 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
     -- Create the wibox
     s.mywibox = awful.wibar {
-        height = 30,
+        height = 32,
         position = "top",
         screen   = s,
         widget   = {
-            layout = wibox.layout.align.horizontal,
-            { -- Left widgets
-                layout = wibox.layout.fixed.horizontal,
-                s.mytaglist,
-                s.mypromptbox,
+            {
+                layout = wibox.layout.align.horizontal,
+                expand = "none",
+                { -- Left widgets
+                    layout = wibox.layout.fixed.horizontal,
+                    s.mytaglist,
+                    s.mypromptbox,
+                },
+                s.mytasklist, -- Middle widget
+                { -- Right widgets
+                    layout = wibox.layout.fixed.horizontal,
+                    mykeyboardlayout,
+                    mytray,
+                    mytextclock,
+                    s.mylayoutbox,
+                },    
             },
-            s.mytasklist, -- Middle widget
-            { -- Right widgets
-                layout = wibox.layout.fixed.horizontal,
-                mykeyboardlayout,
-                mytray,
-                mytextclock,
-                s.mylayoutbox,
-            },
-        }
+            bottom = beautiful.xresources.apply_dpi(3),
+            color = beautiful.bg_normal,
+            widget = wibox.container.margin,
+        },
     }
 end)
 

@@ -1,6 +1,6 @@
 pcall(require, "luarocks.loader")
 require "consts"
-require "notifications"
+-- require "notifications"
 require "maincfg"
 require "keys"
 require "rules"
