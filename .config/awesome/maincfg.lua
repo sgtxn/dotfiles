@@ -93,7 +93,7 @@ beautiful.systray_icon_spacing = 5
 
 screen.connect_signal("request::desktop_decoration", function(s)
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5", "q", "w", "e", "r", "t" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -110,27 +110,29 @@ screen.connect_signal("request::desktop_decoration", function(s)
         }
     }
 
+    local taglist_buttons = {
+        awful.button({ }, 1, function(t) t:view_only() end),
+        awful.button({ modkey }, 1, function(t)
+                                        if client.focus then
+                                            client.focus:move_to_tag(t)
+                                        end
+                                    end),
+        awful.button({ }, 3, awful.tag.viewtoggle),
+        awful.button({ modkey }, 3, function(t)
+                                        if client.focus then
+                                            client.focus:toggle_tag(t)
+                                        end
+                                    end),
+        awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end),
+        awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end),
+    }
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
-        buttons = {
-            awful.button({ }, 1, function(t) t:view_only() end),
-            awful.button({ modkey }, 1, function(t)
-                                            if client.focus then
-                                                client.focus:move_to_tag(t)
-                                            end
-                                        end),
-            awful.button({ }, 3, awful.tag.viewtoggle),
-            awful.button({ modkey }, 3, function(t)
-                                            if client.focus then
-                                                client.focus:toggle_tag(t)
-                                            end
-                                        end),
-            awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end),
-            awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end),
-        }
+        buttons = taglist_buttons,
     }
+    
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
@@ -143,6 +145,11 @@ screen.connect_signal("request::desktop_decoration", function(s)
             awful.button({ }, 3, function() awful.menu.client_list { theme = { width = 250 } } end),
             awful.button({ }, 4, function() awful.client.focus.byidx(-1) end),
             awful.button({ }, 5, function() awful.client.focus.byidx( 1) end),
+        },
+        layout = {
+            spacing = 10,
+            layout  = wibox.layout.flex.horizontal,
+            max_widget_size = 500
         },
         widget_template = {
             {

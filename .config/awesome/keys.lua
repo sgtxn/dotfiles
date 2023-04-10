@@ -113,61 +113,45 @@ awful.keyboard.append_global_keybindings({
               {description = "select previous", group = "layout"}),
 })
 
--- tag related stuff
-awful.keyboard.append_global_keybindings({
-    awful.key {
-        modifiers   = { modkey },
-        keygroup    = "numrow",
-        description = "only view tag",
-        group       = "tag",
-        on_press    = function (index)
-            local tag = awful.tag.find_by_name(awful.screen, tostring(index))
-            if tag then
-                tag:view_only()
-            end
-        end,
-    },
-    awful.key {
-        modifiers   = { modkey, "Control" },
-        keygroup    = "numrow",
-        description = "toggle tag",
-        group       = "tag",
-        on_press    = function (index)
-            local tag = awful.tag.find_by_name(awful.screen, tostring(index))
-            if tag then
-                awful.tag.viewtoggle(tag)
-            end
-        end,
-    },
-    awful.key {
-        modifiers = { modkey, "Shift" },
-        keygroup    = "numrow",
-        description = "move focused client to tag",
-        group       = "tag",
-        on_press    = function (index)
-            if client.focus then
-                local tag = awful.tag.find_by_name(client.focus.screen, tostring(index))
+local np_map = { "1", "2", "3", "4", "5", "q", "w", "e", "r", "t" }
+for idx, button in ipairs(np_map) do
+    awful.keyboard.append_global_keybindings(
+        {
+            awful.key( { modkey }, button, function ()
+                local tag = awful.tag.find_by_name(awful.screen, button)
                 if tag then
-                    client.focus:move_to_tag(tag)
+                    tag:view_only()
                 end
             end
-        end,
-    },
-    awful.key {
-        modifiers   = { modkey, "Control", "Shift" },
-        keygroup    = "numrow",
-        description = "toggle focused client on tag",
-        group       = "tag",
-        on_press    = function (index)
-            if client.focus then
-                local tag = awful.tag.find_by_name(client.focus.screen, tostring(index))
+            ),
+            awful.key( { modkey, "Control" }, button, function ()
+                local tag = awful.tag.find_by_name(awful.screen, button)
                 if tag then
-                    client.focus:toggle_tag(tag)
+                    awful.tag.viewtoggle(tag)
                 end
             end
-        end,
-    }
-})
+            ),
+            awful.key( { modkey, "Shift" }, button, function ()
+                if client.focus then
+                    local tag = awful.tag.find_by_name(awful.screen, button)
+                    if tag then
+                        client.focus:move_to_tag(tag)
+                    end
+                end
+            end
+            ),
+            awful.key( { modkey, "Control", "Shift" }, button, function ()
+                if client.focus then
+                    local tag = awful.tag.find_by_name(awful.screen, button)
+                    if tag then
+                        client.focus:toggle_tag(tag)
+                    end
+                end
+            end
+            ),
+        }
+    )
+end
 
 
 -- {{{ Mouse bindings
@@ -212,7 +196,7 @@ client.connect_signal("request::default_keybindings", function()
                 {description = "move to master", group = "client"}),
         awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
                 {description = "move to screen", group = "client"}),
-        awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
+        awful.key({ modkey,           }, "i",      function (c) c.ontop = not c.ontop            end,
                 {description = "toggle keep on top", group = "client"}),
         awful.key({ modkey,           }, "n",
             function (c)
