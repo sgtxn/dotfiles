@@ -12,11 +12,12 @@
 	font-family: "mononoki" !important;
 	font-size: 13 !important;
 	font-weight: bold !important;
-	color: #cad3f5 !important;
+	color: #d8dee9 !important;
 }
 
 #urlbar,#nav-bar,#urlbar-input-container{
-	background-color: #181926 !important;
+	background-color: #282a36 !important;
+/*	background-color: #1d2021 !important;*/
 	border: none !important;
 	box-shadow: none !important;
 }
@@ -26,22 +27,22 @@
 }
 
 #navigator-toolbox { 
-	background-color: #181926 !important;
+	background-color: #6272a4 !important;
 /*	background-color: #282828 !important;*/
-	border-color: #181926 !important;
+	border-color: #000000 !important;
 }
 
 #sidebar-splitter {
 	width: 1px !important; 
-	color: #181926 !important;
+	color: #6272a4 !important;
 	/*color: #282828 !important;*/
 	border: none !important;
 }
 
 .urlbarView {
 	border: solid !important;
-	border-color: #181926 !important;
-	background-color: #181926 !important;
+	border-color: #6272a4 !important;
+	background-color: #44475a !important;
 	/*border-color: #504945 !important;
 	background-color: #282828 !important;*/
 	margin-inline-start: 0px !important;
