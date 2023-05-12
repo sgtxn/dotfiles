@@ -45,7 +45,7 @@ tag.connect_signal("request::default_layouts", function()
 end)
 -- }}}
 
-screen.connect_signal("arrange", function (s)
+screen.connect_signal("arrange", function(s)
     local only_one = #s.tiled_clients == 1
     for _, c in pairs(s.clients) do
         if only_one and not c.floating or c.maximized then
@@ -103,28 +103,28 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mylayoutbox = awful.widget.layoutbox {
         screen  = s,
         buttons = {
-            awful.button({ }, 1, function () awful.layout.inc( 1) end),
-            awful.button({ }, 3, function () awful.layout.inc(-1) end),
-            awful.button({ }, 4, function () awful.layout.inc(-1) end),
-            awful.button({ }, 5, function () awful.layout.inc( 1) end),
+            awful.button({}, 1, function() awful.layout.inc(1) end),
+            awful.button({}, 3, function() awful.layout.inc(-1) end),
+            awful.button({}, 4, function() awful.layout.inc(-1) end),
+            awful.button({}, 5, function() awful.layout.inc(1) end),
         }
     }
 
     local taglist_buttons = {
-        awful.button({ }, 1, function(t) t:view_only() end),
+        awful.button({}, 1, function(t) t:view_only() end),
         awful.button({ modkey }, 1, function(t)
-                                        if client.focus then
-                                            client.focus:move_to_tag(t)
-                                        end
-                                    end),
-        awful.button({ }, 3, awful.tag.viewtoggle),
+            if client.focus then
+                client.focus:move_to_tag(t)
+            end
+        end),
+        awful.button({}, 3, awful.tag.viewtoggle),
         awful.button({ modkey }, 3, function(t)
-                                        if client.focus then
-                                            client.focus:toggle_tag(t)
-                                        end
-                                    end),
-        awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end),
-        awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end),
+            if client.focus then
+                client.focus:toggle_tag(t)
+            end
+        end),
+        awful.button({}, 4, function(t) awful.tag.viewprev(t.screen) end),
+        awful.button({}, 5, function(t) awful.tag.viewnext(t.screen) end),
     }
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
@@ -132,23 +132,23 @@ screen.connect_signal("request::desktop_decoration", function(s)
         filter  = awful.widget.taglist.filter.all,
         buttons = taglist_buttons,
     }
-    
+
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = {
-            awful.button({ }, 1, function (c)
+        screen          = s,
+        filter          = awful.widget.tasklist.filter.currenttags,
+        buttons         = {
+            awful.button({}, 1, function(c)
                 c:activate { context = "tasklist", action = "toggle_minimization" }
             end),
-            awful.button({ }, 3, function() awful.menu.client_list { theme = { width = 250 } } end),
-            awful.button({ }, 4, function() awful.client.focus.byidx(-1) end),
-            awful.button({ }, 5, function() awful.client.focus.byidx( 1) end),
+            awful.button({}, 3, function() awful.menu.client_list { theme = { width = 250 } } end),
+            awful.button({}, 4, function() awful.client.focus.byidx(-1) end),
+            awful.button({}, 5, function() awful.client.focus.byidx(1) end),
         },
-        layout = {
-            spacing = 10,
-            layout  = wibox.layout.flex.horizontal,
+        layout          = {
+            spacing         = 10,
+            layout          = wibox.layout.flex.horizontal,
             max_widget_size = 500
         },
         widget_template = {
@@ -168,8 +168,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
                     },
                     layout = wibox.layout.fixed.horizontal,
                 },
-                left  = 5,
-                right = 5,
+                left   = 5,
+                right  = 5,
                 widget = wibox.container.margin
             },
             id     = 'background_role',
@@ -179,26 +179,29 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
     -- Create the wibox
     s.mywibox = awful.wibar {
-        height = 32,
+        visible  = false,
+        height   = 32,
         position = "top",
         screen   = s,
         widget   = {
             {
                 layout = wibox.layout.align.horizontal,
                 expand = "none",
-                { -- Left widgets
+                {
+                  -- Left widgets
                     layout = wibox.layout.fixed.horizontal,
                     s.mytaglist,
                     s.mypromptbox,
                 },
                 s.mytasklist, -- Middle widget
-                { -- Right widgets
+                {
+                              -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
                     mykeyboardlayout,
                     mytray,
                     mytextclock,
                     s.mylayoutbox,
-                },    
+                },
             },
             bottom = beautiful.xresources.apply_dpi(3),
             color = beautiful.bg_normal,
@@ -234,13 +237,13 @@ end)
 --     end)
 -- end
 
-tag.connect_signal("property::selected", function (t)
+tag.connect_signal("property::selected", function(t)
     if t.selected then
         local mouseX = mouse.coords().x
         local mouseY = mouse.coords().y
 
-        for k,v in pairs(t.screen.all_clients) do
-            if v.first_tag.index==t.index and mouseX>=v.x and mouseX<=(v.x+v.width) and mouseY>=v.y and mouseY<=(v.y+v.height) and v.name ~= "Desktop" then
+        for k, v in pairs(t.screen.all_clients) do
+            if v.first_tag.index == t.index and mouseX >= v.x and mouseX <= (v.x + v.width) and mouseY >= v.y and mouseY <= (v.y + v.height) and v.name ~= "Desktop" then
                 client.focus = v
             end
         end
