@@ -1,21 +1,26 @@
 source ~/.privateprofile
 
-export XDG_CONFIG_HOME=/home/sgt/.config
-export ZDOTDIR="$HOME/.config/zsh"
+export XDG_CONFIG_HOME="$HOME/.config"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HOST=$(hostname)
 export PATH=~/.local/bin:~/go/bin:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 export GOPATH=~/go
-export K9SCONFIG=/home/sgt/.config/k9s
-export STARSHIP_CONFIG=/home/sgt/.config/starship/starship.toml
+export K9SCONFIG=$XDG_CONFIG_HOME/k9s
+export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 
 export EDITOR=vim
 export TERMINAL=alacritty
 export BROWSER=firefox
 
+
 # Man page color fix
 export LESS_TERMCAP_so=$(tput bold; tput setaf 0; tput setab 4)
 
+# cd to current vscode dir
+vspath=/tmp/vscodepath
+if [ -n "$VSCODE_GIT_ASKPASS_NODE" ]; then echo $PWD > $vspath; fi
+alias wd='if [ -f $vspath ]; then cd $(cat $vspath); else echo "file $vspath not found"; fi'
 
 # Aliases
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
