@@ -48,7 +48,7 @@ end)
 screen.connect_signal("arrange", function(s)
     local only_one = #s.tiled_clients == 1
     for _, c in pairs(s.clients) do
-        if only_one and not c.floating or c.maximized then
+        if only_one and not c.floating or c.maximized or c.fullscreen then
             c.border_width = 0
         else
             c.border_width = beautiful.border_width -- your border width
@@ -188,14 +188,14 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 layout = wibox.layout.align.horizontal,
                 expand = "none",
                 {
-                  -- Left widgets
+                    -- Left widgets
                     layout = wibox.layout.fixed.horizontal,
                     s.mytaglist,
                     s.mypromptbox,
                 },
                 s.mytasklist, -- Middle widget
                 {
-                              -- Right widgets
+                    -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
                     mykeyboardlayout,
                     mytray,

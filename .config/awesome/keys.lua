@@ -9,8 +9,8 @@ awful.keyboard.append_global_keybindings({
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Control", "Mod1" }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
-    -- awful.key({ modkey }, "Return", function () awful.spawn(terminal) end,
-    --           {description = "open a terminal", group = "launcher"}),
+    awful.key({ modkey }, "Return", function () awful.spawn(terminal) end,
+              {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey }, "y",     function () 
         local tags = awful.screen.focused().selected_tags
         for k, tag in pairs(tags) do
