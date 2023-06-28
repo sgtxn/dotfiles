@@ -21,7 +21,7 @@
 	box-shadow: none !important;
 }
 
-#identity-box,#pageActionButton,#tracking-protection-icon-container,#reader-mode-button,#page-action-buttons,#urlbar-background{ 
+#identity-box,#pageActionButton,#tracking-protection-icon-container,#reader-mode-button,#urlbar-background{ 
 	display: none !important; 
 }
 
