@@ -12,7 +12,7 @@ antigen bundle direnv
 antigen bundle starship
 
 antigen bundle zsh-users/zsh-autosuggestions
-bindkey '^ ' autosuggest-accept
+bindkey '^	' autosuggest-accept
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 
