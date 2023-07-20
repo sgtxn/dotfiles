@@ -52,7 +52,7 @@ super + shift + Return
     alacritty --class float
 
 super + x
-	slock	
+	i3lock -i ~/Pictures/lockscreen.png -f
 
 control + Print
 	flameshot screen -c

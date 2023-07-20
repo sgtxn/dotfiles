@@ -5,14 +5,14 @@ source /usr/share/zsh/share/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundle git
-antigen bundle azure
+#antigen bundle azure
 #antigen bundle vi-mode
 antigen bundle fzf 
 antigen bundle direnv
 antigen bundle starship
 
 antigen bundle zsh-users/zsh-autosuggestions
-bindkey '^	' autosuggest-accept
+bindkey '^ ' autosuggest-accept
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 
@@ -60,27 +60,8 @@ export KEYTIMEOUT=1
 # Fix backspace bug when switching modes
 #bindkey "^?" backward-delete-char
 
-# CTRL-R - fzf command history
-#__fzfcmd() {
-#    echo "fzf-tmux -d${FZF_TMUX_HEIGHT:-40%}" || echo "fzf"
-#}
-#export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --bind alt-j:down,alt-k:up"
-#fzf-history-widget() {
-#  local selected num
-#  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-#  selected=( $(fc -rl 1 |
-#    FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
-#  local ret=$?
-#  if [ -n "$selected" ]; then
-#    num=$selected[1]
-#    if [ -n "$num" ]; then
-#      zle vi-fetch-history -n $num
-#    fi
-#  fi
-#  zle reset-prompt
-#  return $ret
-#}
-#zle     -N   fzf-history-widget
-#bindkey '^R' fzf-history-widget
 
 source ~/.zprofile
+#autoload -U +X compinit && compinit
+#autoload -U +X bashcompinit && bashcompinit
+#source /usr/share/bash-completion/completions/az
