@@ -13,6 +13,8 @@ export EDITOR=vim
 export TERMINAL=alacritty
 export BROWSER=firefox
 
+export QT_QPA_PLATFORMTHEME=qt6ct
+
 
 # Man page color fix
 export LESS_TERMCAP_so=$(tput bold; tput setaf 0; tput setab 4)
@@ -25,8 +27,8 @@ alias wd='if [ -f $vspath ]; then cd $(cat $vspath); else echo "file $vspath not
 # Aliases
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 alias cr='code -r .'
-alias ls='exa --group-directories-first'
-alias lsa='exa -a --group-directories-first'
+alias ls='ls --group-directories-first'
+alias lsa='ls -a --group-directories-first'
 alias uuid='uuidgen | xclip -sel clip'
 alias work='cd ~/work'
 alias rndcommit='git add -A && \
@@ -44,7 +46,7 @@ alias yeet='sudo'
 alias dots='cd ~/Documents/dotfiles'
 
 # startx
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  exec startx -- vt1 -keeptty &>/dev/null
-  logout
-fi
+#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#  exec startx -- vt1 -keeptty &>/dev/null
+#  logout
+#fi
