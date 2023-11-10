@@ -4,7 +4,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HOST=$(hostname)
 export PATH=~/.local/bin:~/go/bin:$PATH
-export PATH="$HOME/.cargo/bin:$PATH"
 export GOPATH=~/go
 export K9SCONFIG=$XDG_CONFIG_HOME/k9s
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
@@ -15,6 +14,7 @@ export BROWSER=firefox
 
 export QT_QPA_PLATFORMTHEME=qt6ct
 
+export NO_AT_BRIDGE=1 # dbeaver fix for wayland
 
 # Man page color fix
 export LESS_TERMCAP_so=$(tput bold; tput setaf 0; tput setab 4)
