@@ -118,3 +118,7 @@ alias wttr='curl v2.wttr.in'
 alias yeet='sudo'
 
 alias dots='cd ~/Documents/dotfiles'
+
+
+##### MISC
+setopt auto_cd
