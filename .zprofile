@@ -17,7 +17,8 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 export NO_AT_BRIDGE=1 # dbeaver fix for wayland
 
 # Man page color fix
-export LESS_TERMCAP_so=$(tput bold; tput setaf 0; tput setab 4)
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export MANROFFOPT="-P -c"
 
 # cd to current vscode dir
 vspath=/tmp/vscodepath
@@ -45,8 +46,3 @@ alias yeet='sudo'
 
 alias dots='cd ~/Documents/dotfiles'
 
-# startx
-#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-#  exec startx -- vt1 -keeptty &>/dev/null
-#  logout
-#fi
