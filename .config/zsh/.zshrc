@@ -26,7 +26,10 @@ zinit from"gh-r" as"program" mv"direnv* -> direnv" \
     pick"direnv" src="zhook.zsh" for \
         direnv/direnv
 
-# OMZ
+zinit ice wait lucid
+zinit light jeffreytse/zsh-vi-mode
+
+# # OMZ
 zinit ice wait lucid
 zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
 
@@ -40,8 +43,9 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 bindkey '^ ' autosuggest-accept
 
-zinit ice wait lucid
-zinit light jeffreytse/zsh-vi-mode
+function zvm_after_init() {
+  zvm_bindkey viins '^R' fzf_history_search
+}
 
 
 ##### COMPINIT
