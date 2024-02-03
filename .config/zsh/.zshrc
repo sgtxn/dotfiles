@@ -69,7 +69,6 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 
 export XDG_CONFIG_HOME="$HOME/.config"
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HOST=$(hostname)
 export PATH=~/.local/bin:~/go/bin:$PATH
 export GOPATH=~/go
@@ -115,7 +114,3 @@ alias wttr='curl v2.wttr.in'
 alias yeet='sudo'
 
 alias dots='cd ~/Documents/dotfiles'
-
-
-##### zprofile
-source ~/.zprofile
