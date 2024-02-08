@@ -92,6 +92,9 @@ export NO_AT_BRIDGE=1
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT="-P -c"
 
+#ls colors
+export LS_COLORS="$(vivid generate catppuccin-frappe)"
+
 
 ##### ALIASES
 # cd to current vscode dir
@@ -101,7 +104,7 @@ alias wd='if [ -f $vspath ]; then cd $(cat $vspath); else echo "file $vspath not
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 alias cr='code -r .'
-alias ls='ls --group-directories-first'
+alias ls='ls --group-directories-first --color=auto'
 alias lsa='ls -a --group-directories-first'
 alias lsl='ls -la --group-directories-first'
 alias work='cd ~/work'
