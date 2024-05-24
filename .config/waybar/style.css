@@ -2,7 +2,7 @@
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: mononoki, FontAwesome;
+    font-family: mononoki Nerd Font, FontAwesome;
     font-size: 14px;
 }
 
