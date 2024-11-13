@@ -26,10 +26,11 @@ zinit from"gh-r" as"program" mv"direnv* -> direnv" \
     pick"direnv" src="zhook.zsh" for \
         direnv/direnv
 
-zinit ice wait lucid
+# vim mode
+zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
 
-# # OMZ
+# OMZ
 zinit ice wait lucid
 zinit snippet OMZ::plugins/fzf/fzf.plugin.zsh
 
@@ -53,16 +54,16 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'left' vi-backward-char
-bindkey -M menuselect 'down' vi-down-line-or-history
-bindkey -M menuselect 'up' vi-up-line-or-history
-bindkey -M menuselect 'right' vi-forward-char
+#bindkey -M menuselect 'h' vi-backward-char
+#bindkey -M menuselect 'j' vi-down-line-or-history
+#bindkey -M menuselect 'k' vi-up-line-or-history
+#bindkey -M menuselect 'l' vi-forward-char
+#bindkey -M menuselect 'left' vi-backward-char
+#bindkey -M menuselect 'down' vi-down-line-or-history
+#bindkey -M menuselect 'up' vi-up-line-or-history
+#bindkey -M menuselect 'right' vi-forward-char
 # Fix backspace bug when switching modes
-bindkey "^?" backward-delete-char
+#bindkey "^?" backward-delete-char
 
 
 ##### ENVS
