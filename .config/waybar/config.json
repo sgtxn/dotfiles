@@ -2,7 +2,7 @@
     "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
-    "spacing": 5,
+    "spacing": 2,
     "start_hidden": true,
     "modules-left": [
         "hyprland/workspaces"
@@ -14,9 +14,9 @@
         "tray",
         "pulseaudio",
         "backlight",
-        "hyprland/language",
         "battery",
         "battery#bat1",
+        "hyprland/language",
         "clock"
     ],
     "hyprland/workspaces": {
@@ -104,6 +104,7 @@
             "warning": 30,
             "critical": 15
         },
+        "interval": 3,
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
@@ -125,6 +126,7 @@
             "warning": 30,
             "critical": 15
         },
+        "interval": 3,
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
@@ -138,15 +140,6 @@
             "",
             ""
         ]
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
