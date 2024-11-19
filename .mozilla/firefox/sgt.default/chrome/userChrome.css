@@ -9,7 +9,7 @@
 .urlbar-input-box {
 	width: 99999px !important;
 	text-align: center !important;
-	font-family: "mononoki" !important;
+	font-family: "mononoki Nerd Font" !important;
 	font-size: 13 !important;
 	font-weight: bold !important;
 	color: #babbf1 !important;
@@ -21,7 +21,7 @@
 	box-shadow: none !important;
 }
 
-#identity-box,#pageActionButton,#tracking-protection-icon-container,#reader-mode-button,#urlbar-background{ 
+#pageActionButton,#tracking-protection-icon-container,#reader-mode-button,#urlbar-background{
 	display: none !important; 
 }
 
