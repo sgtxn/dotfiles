@@ -1,11 +1,11 @@
-#TabsToolbar,#sidebar-header {
+/*#TabsToolbar,#sidebar-header {
 	visibility: collapse;
 }
 
 #contentAreaContextMenu {
     margin-left: 4px;
 }
-
+*/
 .urlbar-input-box {
 	width: 99999px !important;
 	text-align: center !important;
@@ -20,7 +20,7 @@
 	border: none !important;
 	box-shadow: none !important;
 }
-
+/*
 #pageActionButton,#tracking-protection-icon-container,#reader-mode-button,#urlbar-background{
 	display: none !important; 
 }
@@ -35,7 +35,7 @@
 	color: #232634 !important;
 	border: none !important;
 }
-
+*/
 .urlbarView {
 	border: solid !important;
 	border-color: #232634 !important;
