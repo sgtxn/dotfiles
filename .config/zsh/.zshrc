@@ -113,7 +113,7 @@ alias rndcommit='git add -A && \
   git commit -m "$(curl -s http://whatthecommit.com/index.txt)" && \
   git push'
 
-alias mirror='sudo reflector --country Japan --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+alias mirror='sudo reflector --country Finland --age 24 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
 alias cp='cp -i'
 alias df='df -h'
 alias free='free -m'
