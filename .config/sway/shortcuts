@@ -1,0 +1,94 @@
+bindsym $mod+Escape kill
+bindsym $mod+Shift+c reload
+bindsym $mod+Control+Alt+q exec swaynag -t warning -m 'Are you sure you want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+q workspace q
+bindsym $mod+w workspace w
+bindsym $mod+e workspace e
+bindsym $mod+r workspace r
+bindsym $mod+t workspace t
+
+bindsym $mod+bracketleft workspace prev
+bindsym $mod+bracketright workspace next
+bindgesture swipe:3:right workspace prev
+bindgesture swipe:3:left workspace next
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+q move container to workspace q
+bindsym $mod+Shift+w move container to workspace w
+bindsym $mod+Shift+e move container to workspace e
+bindsym $mod+Shift+r move container to workspace r
+bindsym $mod+Shift+t move container to workspace t
+
+bindsym $mod+Control+h resize shrink width 50px
+bindsym $mod+Control+l resize grow width 50px
+bindsym $mod+Control+k resize shrink height 50px
+bindsym $mod+Control+j resize grow height 50px
+
+bindsym $mod+tab focus mode_toggle
+
+bindsym $mod+z splitv
+bindsym $mod+Backslash splith
+
+bindsym $mod+f fullscreen
+bindsym $mod+s floating toggle
+bindsym $mod+i layout stacking
+bindsym $mod+o layout tabbed
+bindsym $mod+p layout toggle split
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioPause exec playerctl play-pause
+
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec $term --class float
+bindsym $mod+b exec killall -SIGUSR1 waybar || waybar -c ~/.config/waybar/config.json
+bindsym Print exec 'grim -g "$(slurp -d)" - | swappy -f -'
+bindsym $mod+x exec swaylock -i /home/sgt/Pictures/lockscreen.jpg
+bindsym $mod+F1 exec dunstctl close-all
+bindsym $mod+F2 exec dunstctl history-pop
+
+mode "apps" {
+    bindsym b exec blueman-manager                                                                                                              ; mode "default"
+    bindsym c exec code                                                                                                                         ; mode "default"
+    bindsym f exec firefox                                                                                                                      ; mode "default"
+    bindsym g exec chromium                                                                                                                     ; mode "default"
+    bindsym m exec spotify                                                                                                                      ; mode "default"
+    bindsym n exec nemo                                                                                                                         ; mode "default"
+    bindsym p exec pavucontrol-qt                                                                                                               ; mode "default"
+    bindsym s exec pidof slack > /dev/null && killall slack || slack                                                                            ; mode "default"
+    bindsym t exec pidof telegram-desktop > /dev/null && killall telegram-desktop || telegram-desktop                                                                            ; mode "default"
+    bindsym 1 exec notify-send "$(date '+%d %B %Y, %H:%M:%S %:z')" "$(acpi | grep -v 'rate information unavailable')" --app-name="sysinfo"      ; mode "default"
+    bindsym Space exec rofi -show drun                                                                                                          ; mode "default"
+    
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+bindsym $mod+Space mode "apps"

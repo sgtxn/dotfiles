@@ -5,10 +5,12 @@
     "spacing": 2,
     "start_hidden": true,
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "sway/workspaces"
     ],
     "modules-center": [
-        "hyprland/window"
+        "hyprland/window",
+        "sway/window"
     ],
     "modules-right": [
         "tray",
@@ -17,6 +19,7 @@
         "battery",
         "battery#bat1",
         "hyprland/language",
+        "sway/language",
         "clock"
     ],
     "hyprland/workspaces": {
@@ -27,9 +30,15 @@
     "hyprland/window": {
         "format": "{initialTitle}"
     },
+    "sway/window": {
+        "format": "{title}"
+    },
     "hyprland/language": {
         "format-ru": "RU ",
         "format-en": "EN "
+    },
+    "sway/language": {
+        "format": "{shortDescription}"
     },
     "tray": {
         "icon-size": 20,
@@ -162,6 +171,6 @@
                 ""
             ]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol-qt"
     }
 }
