@@ -11,7 +11,7 @@
 }
 
 window#waybar.empty {
-    background-color: @base;
+    background-color: alpha(@base, 0.99);
 }
 
 window#waybar {
