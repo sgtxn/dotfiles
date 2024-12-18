@@ -1,5 +1,6 @@
 set $mod Mod4
 set $term alacritty
+set $lockcmd swaylock
 
 include colors
 include shortcuts
@@ -13,9 +14,9 @@ default_border pixel 3
 floating_modifier $mod normal
 
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 310 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
-
+        timeout 600 '$lockcmd' \
+        timeout 610 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+        timeout 1200 'systemctl suspend' \
+        lock '$lockcmd'
 
 include @sysconfdir@/sway/config.d/*
