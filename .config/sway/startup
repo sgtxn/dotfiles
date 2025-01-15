@@ -1,4 +1,5 @@
 exec nm-applet
 exec firefox
 exec waybar -c ~/.config/waybar/config.json
-exec swaymsg seat seat0 xcursor_theme capitaine-cursors-light 24
+exec_always swaymsg seat seat0 xcursor_theme capitaine-cursors-light 24
+exec_always --no-startup-id dunst ~/.config/dunst/dunstrc
