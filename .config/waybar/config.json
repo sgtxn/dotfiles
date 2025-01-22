@@ -31,7 +31,8 @@
         "format": "{initialTitle}"
     },
     "sway/window": {
-        "format": "{title}"
+        "format": "{title}",
+        "max-length": 120
     },
     "hyprland/language": {
         "format-ru": "RU ",
