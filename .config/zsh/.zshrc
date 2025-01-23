@@ -100,7 +100,7 @@ export LS_COLORS="$(vivid generate catppuccin-frappe)"
 ##### ALIASES
 # cd to current vscode dir
 vspath=/tmp/vscodepath
-if [ -n "$VSCODE_GIT_ASKPASS_NODE" ]; then echo $PWD > $vspath; fi
+if [ "$TERM_PROGRAM" = "vscode" ]; then echo $PWD > $vspath; fi
 alias wd='if [ -f $vspath ]; then cd $(cat $vspath); else echo "file $vspath not found"; fi'
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
