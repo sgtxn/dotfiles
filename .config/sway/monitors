@@ -3,7 +3,7 @@
 output eDP-1 {
     resolution 1920x1200
     position 0,0
-    bg ~/.config/wallpapers/wallpaper.jpg fill
+    bg ~/.config/wallpapers/wallpaper-laptop.jpg fill
 }
 
 output DP-1 {
