@@ -13,6 +13,7 @@ include /etc/sway/config.d/*
 smart_borders on
 default_border pixel 3
 floating_modifier $mod normal
+focus_follows_mouse always
 
 exec swayidle -w \
         timeout 600 '$lockcmd' \
