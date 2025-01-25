@@ -31,7 +31,7 @@ font=mononoki Nerd Font
 font-size=24
 indicator-radius=100
 indicator-thickness=15
-image=/home/sgt/Pictures/lockscreen.jpg
+image=/home/sgt/.config/wallpapers/lockscreen.jpg
 
 show-failed-attempts
 ignore-empty-password
