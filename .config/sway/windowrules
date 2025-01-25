@@ -1,4 +1,5 @@
 for_window [app_id="float"] floating enable
+for_window [app_id="mpv"] floating enable
 assign [app_id="firefox"] workspace 1
 assign [class="Code"] workspace 2
 assign [class="Slack"] workspace 3
