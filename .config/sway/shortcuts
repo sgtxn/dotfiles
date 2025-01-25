@@ -86,9 +86,9 @@ mode "apps" {
     bindsym --to-code i exec insomnia                                                                                                                     ; mode "default"
     bindsym --to-code m exec spotify                                                                                                                      ; mode "default"
     bindsym --to-code n exec nemo                                                                                                                         ; mode "default"
-    bindsym --to-code p exec pavucontrol-qt                                                                                                               ; mode "default"
+    bindsym --to-code p exec killall pavucontrol-qt || pavucontrol-qt                                                                                     ; mode "default"
     bindsym --to-code s exec pidof slack > /dev/null && killall slack || slack                                                                            ; mode "default"
-    bindsym --to-code t exec pidof telegram-desktop > /dev/null && killall telegram-desktop || telegram-desktop                                                                            ; mode "default"
+    bindsym --to-code t exec pidof telegram-desktop > /dev/null && killall telegram-desktop || telegram-desktop                                           ; mode "default"
     bindsym --to-code 1 exec notify-send "$(date '+%d %B %Y, %H:%M:%S %:z')" "$(acpi | grep -v 'rate information unavailable')" --app-name="sysinfo"      ; mode "default"
     bindsym --to-code Space exec rofi -show drun                                                                                                          ; mode "default"
     

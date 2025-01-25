@@ -108,7 +108,7 @@
         ]
     },
     "battery": {
-	"bat": "BAT0",
+        "bat": "BAT0",
         "states": {
             // "good": 95,
             "warning": 30,
@@ -130,7 +130,7 @@
         ]
     },
     "battery#bat1": {
-	"bat": "BAT1",
+        "bat": "BAT1",
         "states": {
             // "good": 95,
             "warning": 30,
