@@ -11,6 +11,8 @@ include startup
 include /etc/sway/config.d/*
 
 smart_borders on
+smart_gaps on
+# gaps inner 10
 default_border pixel 3
 floating_modifier $mod normal
 focus_follows_mouse always
