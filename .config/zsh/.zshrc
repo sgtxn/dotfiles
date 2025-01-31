@@ -84,7 +84,8 @@ export EDITOR=vim
 export TERMINAL=alacritty
 export BROWSER=firefox
 
-export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_STYLE_OVERRIDE=kvantum
 
 # dbeaver fix for wayland
 export NO_AT_BRIDGE=1 
