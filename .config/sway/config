@@ -20,5 +20,5 @@ focus_follows_mouse always
 exec swayidle -w \
         timeout 600 '$lockcmd' \
         timeout 610 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-        timeout 1200 'systemctl suspend' \
+        before-sleep '$lockcmd' \
         lock '$lockcmd'
