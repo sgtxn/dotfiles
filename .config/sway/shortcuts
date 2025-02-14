@@ -75,7 +75,7 @@ bindsym --to-code $mod+x exec $lockcmd
 bindsym --to-code $mod+F1 exec dunstctl close-all
 bindsym --to-code $mod+F2 exec dunstctl history-pop
 
-bindswitch lid:on systemctl suspend
+# bindswitch lid:on systemctl suspend
 # bindswitch lid:off output * enable
 
 mode "apps" {
